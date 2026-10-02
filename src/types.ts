@@ -59,6 +59,7 @@ export interface PhotoItem {
   src: string;
   category: 'school' | 'industry';
   alt: string;
+  date?: string;
 }
 
 export interface TaskSubmission {

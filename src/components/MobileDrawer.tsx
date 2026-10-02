@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { X, ChevronRight, ChevronDown, Phone, Instagram } from 'lucide-react';
 import { PageId } from '../types';
 import { infoOsjurSubItems } from './Navbar';
-import { HmtiLogo } from './HmtiLogo';
 
 interface MobileDrawerProps {
   isOpen: boolean;
@@ -29,52 +28,49 @@ export const MobileDrawer: React.FC<MobileDrawerProps> = ({
 
   return (
     <div
-      className="fixed inset-0 z-50 lg:hidden flex flex-col justify-end bg-black/40 animate-in fade-in duration-200"
+      className="fixed inset-0 z-50 lg:hidden flex flex-col justify-end bg-black/60 backdrop-blur-2xs animate-in fade-in duration-200"
       onClick={onClose}
     >
       <div
-        className="w-full bg-white rounded-t-[24px] border-t border-[#D6E2FF] p-6 max-h-[88vh] overflow-y-auto"
+        className="w-full bg-white rounded-t-3xl border-t border-slate-100 max-h-[85vh] overflow-y-auto shadow-2xl flex flex-col"
         onClick={(e) => e.stopPropagation()}
       >
-        {/* Header with Logo */}
-        <div className="flex items-center justify-between pb-4 border-b border-[#D6E2FF]">
-          <div className="flex items-center gap-3">
-            <HmtiLogo className="w-9 h-9" />
-            <div>
-              <span className="text-[11px] font-bold text-[#1A56FF] uppercase tracking-wider block">
-                Menu Utama
-              </span>
-              <h2 className="text-lg font-bold text-[#0A1A44] leading-tight">
-                OSJUR D3 TI 2026
-              </h2>
-            </div>
+        {/* Header (Clean & Modern, Tanpa Logo sesuai permintaan user) */}
+        <div className="bg-[#1865F2] text-white p-5 flex items-center justify-between">
+          <div>
+            <span className="text-[10px] font-extrabold uppercase tracking-widest text-[#FFA033] block">
+              NAVIGASI RESMI
+            </span>
+            <h2 className="text-lg font-black text-white leading-tight">
+              OSJUR D3 TI 2026
+            </h2>
           </div>
           <button
             onClick={onClose}
             aria-label="Tutup menu"
-            className="min-h-[44px] min-w-[44px] flex items-center justify-center rounded-full hover:bg-[#EAF0FF] text-[#0A1A44]"
+            className="w-9 h-9 rounded-full bg-white/15 text-white flex items-center justify-center hover:bg-white/25 transition-colors cursor-pointer"
           >
             <X className="w-5 h-5" />
           </button>
         </div>
 
         {/* Links Navigation */}
-        <div className="py-4 space-y-1.5">
+        <div className="p-5 space-y-2 flex-1">
           {/* 1. Beranda */}
           <button
             onClick={() => {
               onNavigate('beranda');
               onClose();
             }}
-            className={`w-full flex items-center justify-between px-4 py-3 rounded-[12px] text-left font-semibold text-sm transition-colors ${
+            className={`w-full flex items-center justify-between px-4 py-3 rounded-2xl text-left font-extrabold text-sm transition-all cursor-pointer ${
               currentPage === 'beranda'
-                ? 'bg-[#1A56FF] text-white'
-                : 'text-[#0A1A44] hover:bg-[#EAF0FF]'
+                ? 'bg-[#1865F2] text-white shadow-md'
+                : 'text-[#1A284E] hover:bg-slate-50'
             }`}
           >
             <span>Beranda</span>
             <ChevronRight
-              className={`w-4 h-4 ${currentPage === 'beranda' ? 'text-white' : 'text-[#4A5A85]'}`}
+              className={`w-4 h-4 ${currentPage === 'beranda' ? 'text-white' : 'text-slate-400'}`}
             />
           </button>
 
@@ -84,31 +80,31 @@ export const MobileDrawer: React.FC<MobileDrawerProps> = ({
               onNavigate('profil');
               onClose();
             }}
-            className={`w-full flex items-center justify-between px-4 py-3 rounded-[12px] text-left font-semibold text-sm transition-colors ${
+            className={`w-full flex items-center justify-between px-4 py-3 rounded-2xl text-left font-extrabold text-sm transition-all cursor-pointer ${
               currentPage === 'profil'
-                ? 'bg-[#1A56FF] text-white'
-                : 'text-[#0A1A44] hover:bg-[#EAF0FF]'
+                ? 'bg-[#1865F2] text-white shadow-md'
+                : 'text-[#1A284E] hover:bg-slate-50'
             }`}
           >
-            <span>Profil Prodi</span>
+            <span>Profil Prodi D3 TI</span>
             <ChevronRight
-              className={`w-4 h-4 ${currentPage === 'profil' ? 'text-white' : 'text-[#4A5A85]'}`}
+              className={`w-4 h-4 ${currentPage === 'profil' ? 'text-white' : 'text-slate-400'}`}
             />
           </button>
 
-          {/* 3. Info OSJUR (Expandable accordion) */}
-          <div className="rounded-[14px] border border-[#D6E2FF] bg-[#EAF0FF]/25 overflow-hidden">
+          {/* 3. Info OSJUR (Tanpa logo/icon di dalamnya sesuai permintaan user) */}
+          <div className="rounded-2xl border border-slate-100 bg-[#F8FAFE] overflow-hidden">
             <button
               onClick={() => setIsInfoOsjurExpanded(!isInfoOsjurExpanded)}
-              className={`w-full flex items-center justify-between px-4 py-3 text-left font-bold text-sm transition-colors ${
-                isInfoOsjurChild ? 'text-[#1A56FF]' : 'text-[#0A1A44]'
+              className={`w-full flex items-center justify-between px-4 py-3 text-left font-extrabold text-sm transition-colors cursor-pointer ${
+                isInfoOsjurChild ? 'text-[#1865F2]' : 'text-[#1A284E]'
               }`}
             >
               <span>Info OSJUR</span>
               <ChevronDown
                 className={`w-4 h-4 transition-transform duration-200 ${
                   isInfoOsjurExpanded ? 'rotate-180' : ''
-                } ${isInfoOsjurChild ? 'text-[#1A56FF]' : 'text-[#4A5A85]'}`}
+                } ${isInfoOsjurChild ? 'text-[#1865F2]' : 'text-slate-400'}`}
               />
             </button>
 
@@ -123,16 +119,16 @@ export const MobileDrawer: React.FC<MobileDrawerProps> = ({
                         onNavigate(sub.id);
                         onClose();
                       }}
-                      className={`w-full flex items-center justify-between px-3.5 py-2.5 rounded-[10px] text-left text-xs font-semibold transition-colors ${
+                      className={`w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl text-left text-xs font-bold transition-all cursor-pointer ${
                         isActive
-                          ? 'bg-[#1A56FF] text-white'
-                          : 'text-[#0A1A44] hover:bg-[#EAF0FF]'
+                          ? 'bg-[#1865F2] text-white shadow-xs'
+                          : 'text-[#1A284E] hover:bg-white'
                       }`}
                     >
                       <span>{sub.label}</span>
                       <ChevronRight
                         className={`w-3.5 h-3.5 ${
-                          isActive ? 'text-white' : 'text-[#4A5A85]'
+                          isActive ? 'text-white' : 'text-slate-400'
                         }`}
                       />
                     </button>
@@ -148,27 +144,27 @@ export const MobileDrawer: React.FC<MobileDrawerProps> = ({
               onNavigate('dokumentasi');
               onClose();
             }}
-            className={`w-full flex items-center justify-between px-4 py-3 rounded-[12px] text-left font-semibold text-sm transition-colors ${
+            className={`w-full flex items-center justify-between px-4 py-3 rounded-2xl text-left font-extrabold text-sm transition-all cursor-pointer ${
               currentPage === 'dokumentasi'
-                ? 'bg-[#1A56FF] text-white'
-                : 'text-[#0A1A44] hover:bg-[#EAF0FF]'
+                ? 'bg-[#1865F2] text-white shadow-md'
+                : 'text-[#1A284E] hover:bg-slate-50'
             }`}
           >
-            <span>Dokumentasi</span>
+            <span>Dokumentasi Kegiatan</span>
             <ChevronRight
-              className={`w-4 h-4 ${currentPage === 'dokumentasi' ? 'text-white' : 'text-[#4A5A85]'}`}
+              className={`w-4 h-4 ${currentPage === 'dokumentasi' ? 'text-white' : 'text-slate-400'}`}
             />
           </button>
         </div>
 
         {/* Quick Contact Footer in Drawer */}
-        <div className="pt-4 border-t border-[#D6E2FF] text-xs text-[#4A5A85] space-y-2">
+        <div className="p-4 bg-slate-50 border-t border-slate-100 text-xs text-slate-500 space-y-1.5">
           <div className="flex items-center gap-2">
-            <Phone className="w-4 h-4 text-[#1A56FF]" />
+            <Phone className="w-3.5 h-3.5 text-[#1865F2]" />
             <span>Panitia: 0812-3456-7890</span>
           </div>
           <div className="flex items-center gap-2">
-            <Instagram className="w-4 h-4 text-[#1A56FF]" />
+            <Instagram className="w-3.5 h-3.5 text-[#1865F2]" />
             <span>@osjur.d3ti</span>
           </div>
         </div>

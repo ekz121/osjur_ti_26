@@ -1,77 +1,81 @@
 import React from 'react';
-import { FileText, Clock, User, Users, Info } from 'lucide-react';
+import { FileText, Clock, User, Users, Info, ArrowUpRight } from 'lucide-react';
 import { assignments } from '../../data/osjurData';
 
 export const PenugasanPage: React.FC = () => {
   return (
-    <div className="space-y-8 sm:space-y-10">
+    <div className="space-y-10 md:space-y-12 pb-6">
       {/* Header */}
-      <section className="space-y-3">
-        <div className="inline-flex items-center gap-2 bg-[#EAF0FF] text-[#1A56FF] px-3.5 py-1.5 rounded-md text-xs font-bold uppercase tracking-wider">
+      <section className="space-y-3 text-center max-w-3xl mx-auto pt-2">
+        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#EBF3FF] text-[#1865F2] text-xs font-extrabold uppercase tracking-wider">
           <FileText className="w-4 h-4" />
-          <span>Informasi Penugasan</span>
+          <span>DAFTAR TUGAS RESMI MAHASISWA BARU</span>
         </div>
 
-        <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-[#0A1A44] tracking-tight">
-          Penugasan
+        <h1 className="text-3xl sm:text-5xl font-black text-[#1A284E] tracking-tight">
+          Penugasan OSJUR D3 TI
         </h1>
 
-        <p className="text-base text-[#4A5A85] max-w-2xl leading-relaxed">
+        <div className="w-12 h-1 bg-[#1865F2] rounded-full mx-auto" />
+
+        <p className="text-xs sm:text-sm text-slate-500 max-w-xl mx-auto leading-relaxed">
           Berikut adalah rincian seluruh penugasan OSJUR D3 Teknologi Informasi 2026.
-          Cermati instruksi dan batas waktu pengerjaan setiap tugas di bawah ini.
+          Cermati instruksi pengerjaan, ketentuan format, dan batas akhir pengumpulan (*deadline*).
         </p>
       </section>
 
-      {/* 4 Kartu Tugas (Hanya Menampilkan Tugas) */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6">
+      {/* 4 Kartu Tugas */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
         {assignments.map((task) => {
           const isKelompok = task.type === 'Kelompok';
           return (
             <div
               key={task.id}
-              className="bg-white rounded-lg border border-[#D6E2FF] p-6 flex flex-col justify-between hover:border-[#1A56FF] transition-all shadow-xs"
+              className="bg-white rounded-3xl border border-slate-100 shadow-[0_6px_25px_-5px_rgba(0,0,0,0.06)] p-7 flex flex-col justify-between hover:shadow-xl hover:-translate-y-1 transition-all"
             >
-              <div className="space-y-4">
-                {/* Header Card: Label & Chip Deadline */}
+              <div className="space-y-5">
+                {/* Header Card: Nomor & Deadline Pill */}
                 <div className="flex items-center justify-between gap-2">
-                  <span className="font-extrabold text-xs text-[#1A56FF] bg-[#EAF0FF] px-3 py-1 rounded-md">
+                  <span className="font-extrabold text-xs text-[#1865F2] bg-[#EBF3FF] px-3.5 py-1 rounded-full uppercase tracking-wider">
                     {task.number}
                   </span>
-                  <div className="flex items-center gap-1.5 text-xs font-bold text-[#1A56FF] bg-[#EAF0FF] px-3 py-1 rounded-md shrink-0">
+                  <div className="flex items-center gap-1.5 text-xs font-extrabold text-[#FFA033] bg-[#FFF6EB] px-3.5 py-1 rounded-full shrink-0">
                     <Clock className="w-3.5 h-3.5" />
-                    <span>Deadline: {task.deadline}</span>
+                    <span>{task.deadline}</span>
                   </div>
                 </div>
 
-                {/* Title & Short Description */}
+                {/* Judul & Deskripsi */}
                 <div>
-                  <h3 className="text-lg sm:text-xl font-bold text-[#0A1A44]">
+                  <h3 className="text-xl font-black text-[#1A284E]">
                     {task.title}
                   </h3>
-                  <p className="text-sm text-[#4A5A85] mt-2 leading-relaxed">
+                  <p className="text-xs sm:text-sm text-slate-500 mt-2 leading-relaxed">
                     {task.description}
                   </p>
                 </div>
 
-                {/* Petunjuk & Rincian */}
-                <div className="p-3.5 rounded-md bg-[#EAF0FF]/50 border border-[#D6E2FF] text-xs text-[#0A1A44] leading-relaxed space-y-1.5">
-                  <p className="font-bold text-[#1A56FF]">Petunjuk Pengerjaan:</p>
-                  <p className="text-[#0A1A44]">{task.detail}</p>
+                {/* Detail & Petunjuk */}
+                <div className="p-4 rounded-2xl bg-[#F8FAFE] border border-slate-100 text-xs text-[#1A284E] leading-relaxed space-y-1.5">
+                  <p className="font-extrabold text-[#1865F2] uppercase tracking-wider text-[10px]">
+                    Petunjuk Pengerjaan:
+                  </p>
+                  <p className="text-slate-600">{task.detail}</p>
                 </div>
               </div>
 
-              {/* Footer Info: Kategori */}
-              <div className="pt-4 mt-4 border-t border-[#D6E2FF] flex items-center justify-between text-xs text-[#4A5A85]">
+              {/* Footer Card */}
+              <div className="pt-5 mt-5 border-t border-slate-100 flex items-center justify-between text-xs font-semibold text-slate-400">
                 <div className="flex items-center gap-1.5">
                   {isKelompok ? (
-                    <Users className="w-4 h-4 text-[#1A56FF]" />
+                    <Users className="w-4 h-4 text-[#8B5CF6]" />
                   ) : (
-                    <User className="w-4 h-4 text-[#1A56FF]" />
+                    <User className="w-4 h-4 text-[#10B981]" />
                   )}
-                  <span className="font-semibold">Kategori: {task.type}</span>
+                  <span className="text-[#1A284E]">Kategori: {task.type}</span>
                 </div>
-                <span className="text-[11px] text-[#4A5A85]">
-                  Untuk pengumpulan, cek menu Pengumpulan
+                <span className="text-[11px] text-[#FFA033]">
+                  Kirim di menu Pengumpulan
                 </span>
               </div>
             </div>

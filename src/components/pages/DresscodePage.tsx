@@ -1,84 +1,88 @@
 import React from 'react';
-import { Shirt, Calendar, Info, Check } from 'lucide-react';
+import { Shirt, Calendar, Info, CheckCircle2 } from 'lucide-react';
 import { dresscodes } from '../../data/osjurData';
 
 export const DresscodePage: React.FC = () => {
   return (
-    <div className="space-y-8 sm:space-y-10">
+    <div className="space-y-10 md:space-y-12 pb-6">
       {/* Header */}
-      <section className="space-y-3">
-        <div className="inline-flex items-center gap-2 bg-[#EAF0FF] text-[#1A56FF] px-3.5 py-1.5 rounded-md text-xs font-bold uppercase tracking-wider">
+      <section className="space-y-3 text-center max-w-3xl mx-auto pt-2">
+        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#EBF3FF] text-[#1865F2] text-xs font-extrabold uppercase tracking-wider">
           <Shirt className="w-4 h-4" />
-          <span>Panduan Pakaian & Perlengkapan</span>
+          <span>KETENTUAN PAKAIAN & ATRIBUT</span>
         </div>
 
-        <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-[#0A1A44] tracking-tight">
-          Dresscode & Atribut
+        <h1 className="text-3xl sm:text-5xl font-black text-[#1A284E] tracking-tight">
+          Dresscode & Atribut Maba
         </h1>
 
-        <p className="text-base text-[#4A5A85] max-w-2xl leading-relaxed">
-          Berikut adalah ketentuan pakaian dan daftar atribut yang wajib kamu kenakan dan bawa
-          pada setiap hari pelaksanaan OSJUR D3 Teknologi Informasi 2026.
+        <div className="w-12 h-1 bg-[#1865F2] rounded-full mx-auto" />
+
+        <p className="text-xs sm:text-sm text-slate-500 max-w-xl mx-auto leading-relaxed">
+          Berikut adalah ketentuan pakaian resmi serta daftar atribut wajib yang harus kamu kenakan dan bawa
+          selama 3 hari pelaksanaan OSJUR D3 Teknologi Informasi 2026.
         </p>
       </section>
 
-      {/* 3 Kartu Hari dengan Tanggal dan Informasi Biasa (Tanpa Checkbox) */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+      {/* 3 Kartu Hari */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
         {dresscodes.map((dc) => (
           <div
             key={dc.day}
-            className="bg-white rounded-lg border border-[#D6E2FF] p-6 flex flex-col justify-between hover:border-[#1A56FF] transition-all shadow-xs"
+            className="bg-white rounded-3xl border border-slate-100 shadow-[0_6px_25px_-5px_rgba(0,0,0,0.06)] p-6 sm:p-7 flex flex-col justify-between hover:shadow-xl hover:-translate-y-1 transition-all"
           >
-            <div className="space-y-5">
+            <div className="space-y-6">
               {/* Day & Date Header */}
-              <div className="pb-3 border-b border-[#D6E2FF] space-y-1">
+              <div className="pb-4 border-b border-slate-100 space-y-2">
                 <div className="flex items-center justify-between">
-                  <h2 className="text-xl font-extrabold text-[#0A1A44]">
+                  <h2 className="text-xl font-black text-[#1A284E]">
                     {dc.title}
                   </h2>
-                  <span className="text-xs font-bold text-[#1A56FF] bg-[#EAF0FF] px-2.5 py-0.5 rounded-md">
+                  <span className="text-xs font-extrabold text-[#FFA033] bg-[#FFF6EB] px-3 py-1 rounded-full uppercase tracking-wider">
                     Wajib
                   </span>
                 </div>
-                <div className="flex items-center gap-1.5 text-xs font-semibold text-[#4A5A85]">
-                  <Calendar className="w-3.5 h-3.5 text-[#1A56FF]" />
+                <div className="flex items-center gap-2 text-xs font-bold text-[#1865F2]">
+                  <Calendar className="w-3.5 h-3.5" />
                   <span>{dc.dateStr}</span>
                 </div>
               </div>
 
               {/* Aturan Pakaian */}
-              <div>
-                <h3 className="text-xs font-bold uppercase tracking-wider text-[#1A56FF] mb-2">
-                  Aturan Pakaian
+              <div className="space-y-2">
+                <h3 className="text-xs font-extrabold uppercase tracking-wider text-slate-400">
+                  Ketentuan Pakaian:
                 </h3>
-                <div className="p-3.5 rounded-md bg-[#EAF0FF]/50 border border-[#D6E2FF] text-sm font-semibold text-[#0A1A44] leading-relaxed">
+                <div className="p-4 rounded-2xl bg-[#F8FAFE] border border-slate-100 text-xs sm:text-sm font-bold text-[#1A284E] leading-relaxed">
                   {dc.attire}
                 </div>
               </div>
 
-              {/* Atribut Yang Dibawa (Tampilan Informasi Biasa, Tanpa Checkbox) */}
-              <div>
-                <h3 className="text-xs font-bold uppercase tracking-wider text-[#1A56FF] mb-2">
-                  Atribut Yang Dibawa
+              {/* Atribut Yang Dibawa */}
+              <div className="space-y-2">
+                <h3 className="text-xs font-extrabold uppercase tracking-wider text-slate-400">
+                  Atribut Yang Dibawa:
                 </h3>
                 <ul className="space-y-2">
                   {dc.items.map((item, idx) => (
                     <li
                       key={idx}
-                      className="flex items-center gap-2.5 p-2.5 rounded-md bg-[#FFFFFF] border border-[#D6E2FF] text-sm text-[#0A1A44]"
+                      className="flex items-center gap-3 p-3 rounded-xl bg-white border border-slate-100 shadow-2xs text-xs sm:text-sm text-[#1A284E]"
                     >
-                      <div className="w-1.5 h-1.5 rounded-full bg-[#1A56FF] shrink-0" />
-                      <span className="font-medium">{item}</span>
+                      <div className="w-5 h-5 rounded-full bg-[#EBF3FF] text-[#1865F2] flex items-center justify-center shrink-0">
+                        <CheckCircle2 className="w-3.5 h-3.5" />
+                      </div>
+                      <span className="font-semibold">{item}</span>
                     </li>
                   ))}
                 </ul>
               </div>
             </div>
 
-            {/* Catatan / Reminder */}
-            <div className="mt-6 pt-4 border-t border-[#D6E2FF] flex items-center gap-2 text-xs text-[#4A5A85]">
-              <Info className="w-4 h-4 text-[#1A56FF] shrink-0" />
-              <span>Pastikan pakaian sopan, rapi, dan sesuai ketentuan.</span>
+            {/* Catatan Kaki */}
+            <div className="mt-6 pt-4 border-t border-slate-100 flex items-center gap-2 text-[11px] text-slate-400">
+              <Info className="w-3.5 h-3.5 text-[#FFA033] shrink-0" />
+              <span>Pastikan name tag terpasang di dada sebelah kiri.</span>
             </div>
           </div>
         ))}

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Phone, Instagram, MapPin, ExternalLink } from 'lucide-react';
+import { Phone, Instagram, MapPin } from 'lucide-react';
 import { PageId } from '../types';
 import { HmtiLogo } from './HmtiLogo';
 
@@ -9,96 +9,141 @@ interface FooterProps {
 
 export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
   return (
-    <footer className="w-full bg-[#1A56FF] text-white pt-10 pb-24 lg:pb-12 mt-16">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 pb-8 border-b border-white/20">
-          {/* Col 1: Identity with HMTI Logo */}
-          <div className="space-y-3">
+    <footer className="relative w-full bg-[#1865F2] text-white pt-14 pb-24 lg:pb-12 mt-20 overflow-hidden">
+      {/* Decorative Wave at the top of Footer */}
+      <div className="absolute top-0 left-0 right-0 w-full overflow-hidden leading-none pointer-events-none -translate-y-[99%]">
+        <svg
+          viewBox="0 0 1200 120"
+          preserveAspectRatio="none"
+          className="relative block w-full h-8 sm:h-14 text-[#1865F2] fill-current"
+        >
+          <path d="M0,0 C320,80 820,10 1200,60 L1200,120 L0,120 Z"></path>
+        </svg>
+      </div>
+
+      {/* Decorative Dot Matrix in Bottom Right */}
+      <div className="absolute -bottom-2 -right-2 p-6 opacity-30 pointer-events-none">
+        <div className="grid grid-cols-6 gap-2">
+          {[...Array(30)].map((_, i) => (
+            <div key={i} className="w-1.5 h-1.5 rounded-full bg-white" />
+          ))}
+        </div>
+      </div>
+
+      {/* Decorative cross in Bottom Left */}
+      <div className="absolute bottom-6 left-6 text-white/30 text-2xl font-black pointer-events-none">
+        ✕
+      </div>
+
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 relative z-10">
+        {/* 4 Column Footer Content (Get Updates card has been completely removed) */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 pb-10 border-b border-white/15 text-left">
+          {/* Col 1: Brand & Logo */}
+          <div className="space-y-4">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-full bg-white p-0.5 flex items-center justify-center shrink-0">
-                <HmtiLogo className="w-9 h-9" />
+              <div className="w-10 h-10 rounded-xl bg-white p-0.5 flex items-center justify-center shadow-md">
+                <HmtiLogo className="w-8 h-8" />
               </div>
-              <div className="inline-flex items-center gap-2 bg-white/10 px-3 py-1 rounded-md text-xs font-semibold tracking-wide">
-                <span>OSJUR D3 TI 2026</span>
+              <div>
+                <span className="font-black text-lg tracking-tight block leading-tight">
+                  OSJUR D3 TI
+                </span>
+                <span className="text-[10px] text-white/70 uppercase tracking-wider font-semibold">
+                  Politeknik Semen Indonesia
+                </span>
               </div>
             </div>
-            <h3 className="text-xl font-extrabold tracking-tight">
-              D3 Teknologi Informasi
-            </h3>
-            <p className="text-sm text-white/90 leading-relaxed">
-              Politeknik Semen Indonesia. Membentuk generasi talenta teknologi
-              yang adaptif, terampil, dan siap berkontribusi nyata bagi industri.
+            <p className="text-xs text-white/80 leading-relaxed">
+              Membentuk generasi talenta teknologi yang adaptif, berintegritas, dan siap menjadi
+              pelopor transformasi digital industri.
             </p>
           </div>
 
           {/* Col 2: Quick Links */}
           <div className="space-y-3">
-            <h4 className="text-sm font-bold uppercase tracking-wider text-white/90">
-              Navigasi Halaman
+            <h4 className="text-xs font-black uppercase tracking-wider text-[#FFA033]">
+              QUICK LINKS
             </h4>
-            <div className="grid grid-cols-2 gap-2 text-sm text-white/80">
+            <div className="flex flex-col space-y-2 text-xs text-white/85 font-medium">
               {onNavigate && (
                 <>
                   <button
                     onClick={() => onNavigate('beranda')}
-                    className="text-left hover:text-white hover:underline transition-all cursor-pointer"
+                    className="text-left hover:text-white hover:translate-x-1 transition-all cursor-pointer"
                   >
-                    Beranda
+                    Beranda Utama
                   </button>
                   <button
                     onClick={() => onNavigate('profil')}
-                    className="text-left hover:text-white hover:underline transition-all cursor-pointer"
+                    className="text-left hover:text-white hover:translate-x-1 transition-all cursor-pointer"
                   >
-                    Profil Prodi
+                    Profil Prodi D3 TI
                   </button>
                   <button
                     onClick={() => onNavigate('kegiatan')}
-                    className="text-left hover:text-white hover:underline transition-all cursor-pointer"
+                    className="text-left hover:text-white hover:translate-x-1 transition-all cursor-pointer"
                   >
-                    Rangkaian Kegiatan
-                  </button>
-                  <button
-                    onClick={() => onNavigate('dresscode')}
-                    className="text-left hover:text-white hover:underline transition-all cursor-pointer"
-                  >
-                    Dresscode
-                  </button>
-                  <button
-                    onClick={() => onNavigate('penugasan')}
-                    className="text-left hover:text-white hover:underline transition-all cursor-pointer"
-                  >
-                    Penugasan
-                  </button>
-                  <button
-                    onClick={() => onNavigate('pengumpulan')}
-                    className="text-left hover:text-white hover:underline transition-all cursor-pointer"
-                  >
-                    Pengumpulan
+                    Jadwal Rangkaian Kegiatan
                   </button>
                   <button
                     onClick={() => onNavigate('dokumentasi')}
-                    className="text-left hover:text-white hover:underline transition-all cursor-pointer"
+                    className="text-left hover:text-white hover:translate-x-1 transition-all cursor-pointer"
                   >
-                    Dokumentasi
+                    Dokumentasi Kegiatan
                   </button>
                 </>
               )}
             </div>
           </div>
 
-          {/* Col 3: Contact & Social */}
+          {/* Col 3: Info OSJUR & Tugas */}
           <div className="space-y-3">
-            <h4 className="text-sm font-bold uppercase tracking-wider text-white/90">
-              Kontak & Media Sosial
+            <h4 className="text-xs font-black uppercase tracking-wider text-[#FFA033]">
+              INFO OSJUR
             </h4>
-            <ul className="space-y-2.5 text-sm">
+            <div className="flex flex-col space-y-2 text-xs text-white/85 font-medium">
+              {onNavigate && (
+                <>
+                  <button
+                    onClick={() => onNavigate('dresscode')}
+                    className="text-left hover:text-white hover:translate-x-1 transition-all cursor-pointer"
+                  >
+                    Dresscode & Atribut
+                  </button>
+                  <button
+                    onClick={() => onNavigate('penugasan')}
+                    className="text-left hover:text-white hover:translate-x-1 transition-all cursor-pointer"
+                  >
+                    Daftar Penugasan
+                  </button>
+                  <button
+                    onClick={() => onNavigate('pengumpulan')}
+                    className="text-left hover:text-white hover:translate-x-1 transition-all cursor-pointer"
+                  >
+                    Portal Pengumpulan Tugas
+                  </button>
+                </>
+              )}
+            </div>
+          </div>
+
+          {/* Col 4: Contact Us */}
+          <div className="space-y-3">
+            <h4 className="text-xs font-black uppercase tracking-wider text-[#FFA033]">
+              CONTACT US
+            </h4>
+            <ul className="space-y-2.5 text-xs text-white/85">
+              <li className="flex items-center gap-2.5">
+                <MapPin className="w-4 h-4 text-[#FFA033] shrink-0" />
+                <span>Kampus Polteksi, Gresik, Jawa Timur</span>
+              </li>
               <li>
                 <a
                   href="tel:081234567890"
-                  className="flex items-center gap-2.5 text-white/90 hover:text-white transition-colors"
+                  className="flex items-center gap-2.5 hover:text-white transition-colors"
                 >
-                  <Phone className="w-4 h-4 shrink-0" />
-                  <span>Panitia OSJUR: 0812-3456-7890</span>
+                  <Phone className="w-4 h-4 text-[#FFA033] shrink-0" />
+                  <span>Panitia: 0812-3456-7890</span>
                 </a>
               </li>
               <li>
@@ -106,25 +151,20 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                   href="https://instagram.com/osjur.d3ti"
                   target="_blank"
                   rel="noreferrer"
-                  className="flex items-center gap-2.5 text-white/90 hover:text-white transition-colors"
+                  className="flex items-center gap-2.5 hover:text-white transition-colors"
                 >
-                  <Instagram className="w-4 h-4 shrink-0" />
+                  <Instagram className="w-4 h-4 text-[#FFA033] shrink-0" />
                   <span>@osjur.d3ti</span>
-                  <ExternalLink className="w-3.5 h-3.5 opacity-70" />
                 </a>
-              </li>
-              <li className="flex items-center gap-2.5 text-white/80">
-                <MapPin className="w-4 h-4 shrink-0" />
-                <span>Kampus Politeknik Semen Indonesia, Gresik</span>
               </li>
             </ul>
           </div>
         </div>
 
-        {/* Copyright notice */}
-        <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-white/80">
-          <span>&copy; 2026 OSJUR D3 Teknologi Informasi - HMTI Politeknik Semen Indonesia.</span>
-          <span>Semangat Orientasi Studi Jurusan!</span>
+        {/* Bottom Bar */}
+        <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-[11px] text-white/70">
+          <span>&copy; 2026 OSJUR D3 Teknologi Informasi - HMTI Politeknik Semen Indonesia. All rights reserved.</span>
+          <span>Designed with Modern Education Platform Style</span>
         </div>
       </div>
     </footer>

@@ -8,83 +8,98 @@ import {
   GraduationCap,
   Briefcase,
   CheckCircle2,
+  ArrowRight,
 } from 'lucide-react';
 import { competencies } from '../../data/osjurData';
 import { HmtiLogo } from '../HmtiLogo';
 
 export const ProfilProdiPage: React.FC = () => {
-  const competencyIcons = [Code2, Layout, Database, Network, Cpu];
+  const competencyTheme = [
+    { icon: Code2, bgColor: 'bg-[#1865F2]', label: 'Web Tech' },
+    { icon: Layout, bgColor: 'bg-[#06B6D4]', label: 'Design' },
+    { icon: Database, bgColor: 'bg-[#10B981]', label: 'Data Architecture' },
+    { icon: Network, bgColor: 'bg-[#8B5CF6]', label: 'Infrastructure' },
+    { icon: Cpu, bgColor: 'bg-[#FFA033]', label: 'Algorithm' },
+  ];
 
   const careerPaths = [
-    { title: 'Frontend & Full-stack Web Developer', note: 'Membangun aplikasi digital modern' },
-    { title: 'UI/UX & Product Designer', note: 'Merancang antarmuka sistem yang intuitif' },
-    { title: 'Database Administrator', note: 'Mengelola arsitektur data enterprise' },
-    { title: 'Network & Cloud Infrastructure Support', note: 'Menjaga konektivitas dan server' },
+    { title: 'Frontend & Full-stack Web Developer', note: 'Membangun aplikasi digital modern berbasis cloud' },
+    { title: 'UI/UX & Product Interface Designer', note: 'Merancang arsitektur antarmuka digital yang intuitif' },
+    { title: 'Database Administrator & Data Engineer', note: 'Mengelola tata kelola & keamanan arsitektur data industri' },
+    { title: 'Network & Cloud Infrastructure Support', note: 'Mengamankan sistem jaringan, server, dan konektivitas' },
   ];
 
   return (
-    <div className="space-y-8 sm:space-y-12">
-      {/* Header & Opening Statement with Logo */}
-      <section className="space-y-4">
-        <div className="flex items-center gap-3">
-          <HmtiLogo className="w-8 h-8" />
-          <div className="inline-flex items-center gap-2 bg-[#EAF0FF] text-[#1A56FF] px-3.5 py-1.5 rounded-md text-xs font-bold uppercase tracking-wider">
-            <GraduationCap className="w-4 h-4" />
-            <span>Mengenal Jurusanmu</span>
-          </div>
+    <div className="space-y-12 md:space-y-16 pb-6">
+      {/* Header Section */}
+      <section className="space-y-4 text-center max-w-3xl mx-auto pt-2">
+        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#EBF3FF] text-[#1865F2] text-xs font-extrabold uppercase tracking-wider">
+          <HmtiLogo className="w-4 h-4" />
+          <span>MENGENAL JURUSANMU</span>
         </div>
 
-        <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-[#0A1A44] tracking-tight">
-          Profil Prodi
+        <h1 className="text-3xl sm:text-5xl font-black text-[#1A284E] tracking-tight">
+          Profil Program Studi D3 TI
         </h1>
 
-        <div className="bg-white rounded-lg border border-[#D6E2FF] p-6 sm:p-8 shadow-xs">
-          <p className="text-base sm:text-lg text-[#0A1A44] leading-relaxed">
-            D3 Teknologi Informasi merupakan program studi di Politeknik Semen Indonesia
-            yang berfokus mencetak talenta digital ahli melalui keseimbangan teori dan praktik.
-            Program ini dirancang agar mahasiswa tidak sekadar memahami konsep, tetapi
-            langsung mengeksekusinya menjadi produk teknologi nyata.
+        <div className="w-12 h-1 bg-[#1865F2] rounded-full mx-auto" />
+
+        <div className="bg-white rounded-3xl p-6 sm:p-8 border border-slate-100 shadow-[0_10px_30px_-5px_rgba(0,0,0,0.05)] text-left mt-6">
+          <p className="text-sm sm:text-base text-[#1A284E] leading-relaxed">
+            <strong className="text-[#1865F2]">D3 Teknologi Informasi</strong> merupakan program studi unggulan di{' '}
+            <strong>Politeknik Semen Indonesia</strong> yang berfokus mencetak talenta digital ahli melalui keseimbangan teori dan praktik.
+            Program ini dirancang agar mahasiswa tidak sekadar memahami konsep, tetapi langsung mengeksekusinya menjadi produk teknologi nyata.
           </p>
         </div>
       </section>
 
-      {/* 5 Kompetensi Utama */}
-      <section className="space-y-4">
-        <div>
-          <span className="text-xs font-bold text-[#1A56FF] uppercase tracking-wider">
-            Kurikulum Keunggulan
+      {/* 5 Kompetensi Utama (Mockup Card Style) */}
+      <section className="space-y-8">
+        <div className="text-center space-y-2">
+          <span className="text-[11px] font-extrabold uppercase tracking-widest text-[#FFA033]">
+            CORE COMPETENCIES
           </span>
-          <h2 className="text-2xl sm:text-3xl font-extrabold text-[#0A1A44] tracking-tight mt-1">
-            5 Kompetensi Utama
+          <h2 className="text-2xl sm:text-3xl font-black text-[#1A284E] tracking-tight">
+            5 Kompetensi Utama Lulusan
           </h2>
-          <p className="text-sm text-[#4A5A85] mt-1">
-            Fokus keilmuan praktis yang akan kamu kuasai secara bertahap selama perkuliahan.
-          </p>
+          <div className="w-12 h-1 bg-[#1865F2] rounded-full mx-auto mt-2" />
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {competencies.map((comp, idx) => {
-            const Icon = competencyIcons[idx % competencyIcons.length];
+            const theme = competencyTheme[idx % competencyTheme.length];
+            const Icon = theme.icon;
+
             return (
               <div
                 key={comp.number}
-                className="bg-white rounded-lg border border-[#D6E2FF] p-6 flex flex-col justify-between hover:border-[#1A56FF] transition-all hover:bg-[#EAF0FF]/20 shadow-xs"
+                className="bg-white rounded-3xl p-7 border border-slate-100 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.05)] hover:shadow-xl hover:-translate-y-1 transition-all flex flex-col justify-between group"
               >
-                <div>
-                  <div className="flex items-center justify-between mb-4">
-                    <span className="font-extrabold text-2xl text-[#1A56FF] tabular-nums">
-                      {comp.number}
-                    </span>
-                    <div className="w-10 h-10 rounded-md bg-[#EAF0FF] text-[#1A56FF] flex items-center justify-center">
-                      <Icon className="w-5 h-5 stroke-[2]" />
+                <div className="space-y-4">
+                  <div className="flex items-center justify-between">
+                    <div
+                      className={`w-13 h-13 rounded-2xl ${theme.bgColor} text-white flex items-center justify-center shadow-md`}
+                    >
+                      <Icon className="w-6 h-6 stroke-[2.2]" />
                     </div>
+                    <span className="text-xs font-black text-[#FFA033] bg-[#FFF6EB] px-3 py-1 rounded-full">
+                      Pilar {comp.number}
+                    </span>
                   </div>
-                  <h3 className="font-bold text-lg text-[#0A1A44] mb-2">
-                    {comp.title}
-                  </h3>
-                  <p className="text-sm text-[#4A5A85] leading-relaxed">
-                    {comp.description}
-                  </p>
+
+                  <div>
+                    <h3 className="text-lg font-extrabold text-[#1A284E] group-hover:text-[#1865F2] transition-colors">
+                      {comp.title}
+                    </h3>
+                    <p className="text-xs sm:text-sm text-slate-500 mt-2 leading-relaxed">
+                      {comp.description}
+                    </p>
+                  </div>
+                </div>
+
+                <div className="pt-5 mt-5 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-slate-400">
+                  <span className="text-[#1865F2]">{theme.label}</span>
+                  <span>0{idx + 1}</span>
                 </div>
               </div>
             );
@@ -92,32 +107,34 @@ export const ProfilProdiPage: React.FC = () => {
         </div>
       </section>
 
-      {/* Prospek Karir & Relevansi Industri */}
-      <section className="bg-white rounded-lg border border-[#D6E2FF] p-6 sm:p-8 space-y-4 shadow-xs">
+      {/* Prospek Karir Section */}
+      <section className="bg-white rounded-3xl p-8 sm:p-10 border border-slate-100 shadow-[0_10px_30px_-5px_rgba(0,0,0,0.05)] space-y-6">
         <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-md bg-[#EAF0FF] text-[#1A56FF] flex items-center justify-center">
-            <Briefcase className="w-5 h-5 stroke-[2]" />
+          <div className="w-12 h-12 rounded-2xl bg-[#FFA033] text-white flex items-center justify-center shadow-md">
+            <Briefcase className="w-6 h-6" />
           </div>
           <div>
-            <h3 className="text-lg sm:text-xl font-extrabold text-[#0A1A44]">
-              Prospek Lulusan D3 TI
-            </h3>
-            <p className="text-xs sm:text-sm text-[#4A5A85]">
-              Karier nyata yang menunggu setelah kamu menyelesaikan studi
-            </p>
+            <span className="text-[10px] font-extrabold uppercase tracking-widest text-[#FFA033]">
+              CAREER PATHWAYS
+            </span>
+            <h2 className="text-xl sm:text-2xl font-black text-[#1A284E]">
+              Prospek Karir Lulusan D3 TI
+            </h2>
           </div>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
           {careerPaths.map((career, i) => (
             <div
               key={i}
-              className="p-3.5 rounded-md bg-[#EAF0FF]/40 border border-[#D6E2FF] flex items-start gap-3"
+              className="p-4 rounded-2xl bg-[#F8FAFE] border border-slate-100 flex items-start gap-3.5 hover:border-[#1865F2] transition-colors"
             >
-              <CheckCircle2 className="w-5 h-5 text-[#1A56FF] shrink-0 mt-0.5" />
+              <div className="w-6 h-6 rounded-full bg-[#1865F2] text-white flex items-center justify-center shrink-0 mt-0.5">
+                <CheckCircle2 className="w-4 h-4" />
+              </div>
               <div>
-                <h4 className="text-sm font-bold text-[#0A1A44]">{career.title}</h4>
-                <p className="text-xs text-[#4A5A85]">{career.note}</p>
+                <h3 className="text-sm font-extrabold text-[#1A284E]">{career.title}</h3>
+                <p className="text-xs text-slate-500 mt-0.5">{career.note}</p>
               </div>
             </div>
           ))}

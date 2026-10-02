@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import { Send, ExternalLink, Clock, Info, Link as LinkIcon, Settings2, Check } from 'lucide-react';
+import React, { useState } from 'react';
+import { Send, ExternalLink, Clock, Info, Link as LinkIcon, Settings2, Check, ArrowRight } from 'lucide-react';
 import { assignments } from '../../data/osjurData';
 
-// TAUTAN FORM PENGUMPULAN (Bisa diganti langsung di sini atau via tombol pengaturan di bawah):
 export const DEFAULT_FORM_URL = 'https://forms.gle/';
 
 export const PengumpulanPage: React.FC = () => {
@@ -35,74 +34,75 @@ export const PengumpulanPage: React.FC = () => {
     }, 1000);
   };
 
-  const handleOpenForm = (taskTitle: string) => {
-    // Open target form in a new tab
-    window.open(formUrl, '_blank', 'noopener,noreferrer');
-  };
-
   return (
-    <div className="space-y-8 sm:space-y-10">
-      {/* Header & Instructions */}
-      <section className="space-y-3">
-        <div className="inline-flex items-center gap-2 bg-[#EAF0FF] text-[#1A56FF] px-3.5 py-1.5 rounded-md text-xs font-bold uppercase tracking-wider">
+    <div className="space-y-10 md:space-y-12 pb-6">
+      {/* Header */}
+      <section className="space-y-3 text-center max-w-3xl mx-auto pt-2">
+        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#EBF3FF] text-[#1865F2] text-xs font-extrabold uppercase tracking-wider">
           <Send className="w-4 h-4" />
-          <span>Portal Pengumpulan</span>
+          <span>PORTAL PENGUMPULAN TUGAS</span>
         </div>
 
-        <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-[#0A1A44] tracking-tight">
+        <h1 className="text-3xl sm:text-5xl font-black text-[#1A284E] tracking-tight">
           Pengumpulan Penugasan
         </h1>
 
+        <div className="w-12 h-1 bg-[#1865F2] rounded-full mx-auto" />
+
         {/* Teks Petunjuk Resmi */}
-        <div className="bg-[#EAF0FF] border border-[#D6E2FF] rounded-lg p-4 sm:p-5 flex items-start gap-3">
-          <Info className="w-5 h-5 text-[#1A56FF] shrink-0 mt-0.5" />
+        <div className="bg-white rounded-3xl p-6 sm:p-7 border border-slate-100 shadow-[0_6px_25px_-5px_rgba(0,0,0,0.06)] text-left flex items-start gap-4 mt-6">
+          <div className="w-10 h-10 rounded-2xl bg-[#FFA033] text-white flex items-center justify-center shrink-0 shadow-md">
+            <Info className="w-5 h-5" />
+          </div>
           <div className="space-y-1">
-            <p className="text-sm font-semibold text-[#0A1A44] leading-relaxed">
+            <p className="text-sm font-extrabold text-[#1A284E] leading-relaxed">
               Klik tombol untuk membuka form pengumpulan. Pastikan file sudah siap sebelum deadline.
             </p>
-            <p className="text-xs text-[#4A5A85]">
-              Formulir akan terbuka di tab baru. Pastikan akun Google yang kamu gunakan sesuai.
+            <p className="text-xs text-slate-500">
+              Formulir Google Form resmi panitia akan terbuka di tab baru. Siapkan link Google Drive atau berkas tugasmu.
             </p>
           </div>
         </div>
 
-        {/* Custom Form URL Quick Editor for Developer/Panitia */}
-        <div className="pt-1">
+        {/* Link Form Settings Bar */}
+        <div className="pt-2 text-left">
           {!isEditingUrl ? (
-            <div className="flex flex-wrap items-center justify-between gap-2 p-3 rounded-md bg-white border border-[#D6E2FF] text-xs">
-              <div className="flex items-center gap-2 text-[#4A5A85] truncate">
-                <LinkIcon className="w-4 h-4 text-[#1A56FF] shrink-0" />
-                <span className="font-semibold text-[#0A1A44]">Tautan Form Aktif:</span>
-                <span className="text-[#1A56FF] truncate font-mono text-[11px]">{formUrl}</span>
+            <div className="flex flex-wrap items-center justify-between gap-3 p-4 rounded-2xl bg-white border border-slate-100 shadow-xs text-xs">
+              <div className="flex items-center gap-2.5 text-slate-500 truncate">
+                <LinkIcon className="w-4 h-4 text-[#1865F2] shrink-0" />
+                <span className="font-extrabold text-[#1A284E]">Tautan Form Aktif:</span>
+                <span className="text-[#1865F2] truncate font-mono text-[11px] bg-[#EBF3FF] px-2.5 py-1 rounded-md">
+                  {formUrl}
+                </span>
               </div>
               <button
                 onClick={() => {
                   setTempUrl(formUrl);
                   setIsEditingUrl(true);
                 }}
-                className="inline-flex items-center gap-1.5 px-3 py-1 rounded-md bg-[#EAF0FF] hover:bg-[#D6E2FF] text-[#1A56FF] font-bold text-[11px] transition-colors cursor-pointer shrink-0"
+                className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-[#EBF3FF] hover:bg-[#D6E6FF] text-[#1865F2] font-bold text-xs transition-colors cursor-pointer shrink-0"
               >
                 <Settings2 className="w-3.5 h-3.5" />
                 <span>Ubah Link Form</span>
               </button>
             </div>
           ) : (
-            <form onSubmit={handleSaveUrl} className="p-3.5 rounded-md bg-white border border-[#1A56FF] space-y-2">
-              <label className="block text-xs font-bold text-[#0A1A44]">
-                Masukkan Tautan Form Google / Microsoft Form Pengumpulanmu:
+            <form onSubmit={handleSaveUrl} className="p-4 rounded-2xl bg-white border border-[#1865F2] shadow-md space-y-3">
+              <label className="block text-xs font-bold text-[#1A284E]">
+                Masukkan Tautan Google Form Pengumpulan Tugas:
               </label>
-              <div className="flex flex-col sm:flex-row items-center gap-2">
+              <div className="flex flex-col sm:flex-row items-center gap-2.5">
                 <input
                   type="url"
                   value={tempUrl}
                   onChange={(e) => setTempUrl(e.target.value)}
                   placeholder="https://forms.gle/..."
-                  className="flex-1 w-full px-3 py-2 rounded-md border border-[#D6E2FF] text-xs text-[#0A1A44] focus:outline-none focus:border-[#1A56FF]"
+                  className="flex-1 w-full px-4 py-2.5 rounded-xl border border-slate-200 text-xs text-[#1A284E] focus:outline-none focus:border-[#1865F2]"
                 />
                 <div className="flex items-center gap-2 w-full sm:w-auto">
                   <button
                     type="submit"
-                    className="flex-1 sm:flex-none px-4 py-2 rounded-md bg-[#1A56FF] hover:bg-[#0F3FD1] text-white text-xs font-bold transition-colors cursor-pointer flex items-center justify-center gap-1"
+                    className="flex-1 sm:flex-none px-5 py-2.5 rounded-full bg-[#1865F2] hover:bg-[#1255DC] text-white text-xs font-bold transition-all cursor-pointer flex items-center justify-center gap-1.5 shadow-sm"
                   >
                     {saveSuccess ? (
                       <>
@@ -116,7 +116,7 @@ export const PengumpulanPage: React.FC = () => {
                   <button
                     type="button"
                     onClick={() => setIsEditingUrl(false)}
-                    className="px-3 py-2 rounded-md bg-[#EAF0FF] text-[#4A5A85] text-xs font-semibold hover:bg-[#D6E2FF] cursor-pointer"
+                    className="px-4 py-2.5 rounded-full bg-slate-100 text-slate-600 text-xs font-bold hover:bg-slate-200 cursor-pointer"
                   >
                     Batal
                   </button>
@@ -127,47 +127,46 @@ export const PengumpulanPage: React.FC = () => {
         </div>
       </section>
 
-      {/* 4 Kartu Tugas Pengumpulan */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6">
+      {/* 4 Kartu Pengumpulan */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
         {assignments.map((task) => (
           <div
             key={task.id}
-            className="bg-white rounded-lg border border-[#D6E2FF] p-6 flex flex-col justify-between hover:border-[#1A56FF] transition-all shadow-xs"
+            className="bg-white rounded-3xl border border-slate-100 shadow-[0_6px_25px_-5px_rgba(0,0,0,0.06)] p-7 flex flex-col justify-between hover:shadow-xl hover:-translate-y-1 transition-all"
           >
             <div className="space-y-4">
               {/* Header: Task Number & Deadline */}
               <div className="flex items-center justify-between gap-2">
-                <span className="text-xs font-bold uppercase tracking-wide text-[#1A56FF] bg-[#EAF0FF] px-2.5 py-0.5 rounded-md">
+                <span className="text-xs font-black uppercase tracking-wider text-[#1865F2] bg-[#EBF3FF] px-3.5 py-1 rounded-full">
                   {task.number}
                 </span>
-                <div className="flex items-center gap-1.5 text-xs text-[#4A5A85]">
-                  <Clock className="w-3.5 h-3.5 text-[#1A56FF]" />
-                  <span>Deadline: {task.deadline}</span>
+                <div className="flex items-center gap-1.5 text-xs font-bold text-[#FFA033] bg-[#FFF6EB] px-3.5 py-1 rounded-full">
+                  <Clock className="w-3.5 h-3.5" />
+                  <span>{task.deadline}</span>
                 </div>
               </div>
 
-              {/* Nama Tugas */}
               <div>
-                <h3 className="text-lg sm:text-xl font-bold text-[#0A1A44]">
+                <h3 className="text-xl font-black text-[#1A284E]">
                   {task.title}
                 </h3>
-                <p className="text-xs sm:text-sm text-[#4A5A85] mt-1.5 leading-relaxed">
+                <p className="text-xs sm:text-sm text-slate-500 mt-2 leading-relaxed">
                   {task.description}
                 </p>
               </div>
 
-              <div className="p-3 rounded-md bg-[#EAF0FF]/40 border border-[#D6E2FF] text-xs text-[#4A5A85]">
-                <span>Format: Link Google Drive / Dokumen / Repositori sesuai instruksi penugasan.</span>
+              <div className="p-3.5 rounded-2xl bg-[#F8FAFE] border border-slate-100 text-xs text-slate-500">
+                <span className="font-semibold text-[#1865F2]">Format Pengiriman:</span> Link Google Drive, Dokumen, atau GitHub sesuai instruksi.
               </div>
             </div>
 
-            {/* Tombol Biru "Kumpulkan Tugas" dengan ikon panah keluar mengarah ke form */}
-            <div className="pt-5 mt-4 border-t border-[#D6E2FF]">
+            {/* Bright Orange Button matching Mockup CTA Style */}
+            <div className="pt-6 mt-6 border-t border-slate-100">
               <a
                 href={formUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full min-h-[44px] px-6 py-2.5 rounded-full bg-[#1A56FF] hover:bg-[#0F3FD1] text-white text-sm font-bold flex items-center justify-center gap-2 transition-all cursor-pointer shadow-xs active:scale-98"
+                className="w-full min-h-[46px] px-6 py-3 rounded-full bg-[#FFA033] hover:bg-[#F59020] text-white text-xs sm:text-sm font-extrabold uppercase tracking-wider flex items-center justify-center gap-2 transition-all cursor-pointer shadow-md hover:shadow-lg active:scale-95"
               >
                 <span>Kumpulkan Tugas</span>
                 <ExternalLink className="w-4 h-4" />

@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Menu, X, ChevronDown } from 'lucide-react';
+import { Menu, X, ChevronDown, ArrowRight } from 'lucide-react';
 import { PageId } from '../types';
 import { HmtiLogo } from './HmtiLogo';
 
@@ -12,9 +12,9 @@ interface NavbarProps {
 
 export const infoOsjurSubItems: { id: PageId; label: string; desc: string }[] = [
   { id: 'kegiatan', label: 'Rangkaian Kegiatan', desc: 'Jadwal & agenda tiap hari' },
-  { id: 'dresscode', label: 'Dresscode', desc: 'Ketentuan pakaian & atribut' },
-  { id: 'penugasan', label: 'Penugasan', desc: 'Daftar & instruksi tugas' },
-  { id: 'pengumpulan', label: 'Pengumpulan', desc: 'Tautan form pengumpulan' },
+  { id: 'dresscode', label: 'Dresscode & Atribut', desc: 'Ketentuan pakaian resmi' },
+  { id: 'penugasan', label: 'Penugasan Maba', desc: 'Daftar instruksi & deadline' },
+  { id: 'pengumpulan', label: 'Portal Pengumpulan', desc: 'Tautan form pengumpulan tugas' },
 ];
 
 export const Navbar: React.FC<NavbarProps> = ({
@@ -46,36 +46,35 @@ export const Navbar: React.FC<NavbarProps> = ({
   }, []);
 
   return (
-    <header className="sticky top-0 z-30 w-full bg-white border-b border-[#D6E2FF]">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 h-14 md:h-16 flex items-center justify-between">
-        {/* Brand with HMTI Logo */}
+    <header className="w-full bg-[#1865F2] text-white sticky top-0 z-40 border-b border-white/10 shadow-sm transition-all">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 h-16 md:h-18 flex items-center justify-between">
+        {/* Brand Logo & Name (Clean, without redundant Info OSJUR button) */}
         <button
           onClick={() => onNavigate('beranda')}
           className="flex items-center gap-2.5 text-left group focus-visible:outline-none cursor-pointer"
         >
-          <HmtiLogo className="w-8 h-8 md:w-9 md:h-9" />
+          <div className="w-9 h-9 rounded-xl bg-white p-0.5 flex items-center justify-center shadow-xs group-hover:scale-105 transition-transform">
+            <HmtiLogo className="w-8 h-8" />
+          </div>
           <div className="flex flex-col">
-            <span className="font-extrabold text-base md:text-lg tracking-tight text-[#0A1A44] leading-tight">
+            <span className="font-extrabold text-base md:text-lg tracking-tight text-white leading-tight">
               OSJUR D3 TI
             </span>
-            <span className="hidden sm:inline text-[11px] font-medium text-[#4A5A85] -mt-0.5">
+            <span className="hidden sm:inline text-[10px] font-medium text-white/80 uppercase tracking-wider">
               Politeknik Semen Indonesia
             </span>
           </div>
         </button>
 
-        {/* Desktop Nav Links (Beranda, Profil Prodi, Info OSJUR dropdown, Dokumentasi) */}
-        <nav className="hidden lg:flex items-center gap-2">
+        {/* Desktop Nav Links: Beranda, Profil Prodi, Info OSJUR (Dropdown disini), Dokumentasi */}
+        <nav className="hidden lg:flex items-center gap-7">
           {/* 1. Beranda */}
           <button
-            onClick={() => {
-              onNavigate('beranda');
-              setIsDropdownOpen(false);
-            }}
-            className={`text-sm font-semibold transition-all cursor-pointer whitespace-nowrap ${
+            onClick={() => onNavigate('beranda')}
+            className={`text-xs font-bold uppercase tracking-wider transition-colors cursor-pointer relative py-1.5 ${
               currentPage === 'beranda'
-                ? 'bg-[#1A56FF] text-white rounded-full px-4 py-1.5 shadow-xs'
-                : 'text-[#4A5A85] hover:text-[#1A56FF] px-3.5 py-1.5 rounded-full hover:bg-[#EAF0FF]'
+                ? 'text-white after:absolute after:bottom-0 after:left-0 after:right-0 after:h-0.5 after:bg-[#FFA033] after:rounded-full'
+                : 'text-white/80 hover:text-white'
             }`}
           >
             Beranda
@@ -83,42 +82,39 @@ export const Navbar: React.FC<NavbarProps> = ({
 
           {/* 2. Profil Prodi */}
           <button
-            onClick={() => {
-              onNavigate('profil');
-              setIsDropdownOpen(false);
-            }}
-            className={`text-sm font-semibold transition-all cursor-pointer whitespace-nowrap ${
+            onClick={() => onNavigate('profil')}
+            className={`text-xs font-bold uppercase tracking-wider transition-colors cursor-pointer relative py-1.5 ${
               currentPage === 'profil'
-                ? 'bg-[#1A56FF] text-white rounded-full px-4 py-1.5 shadow-xs'
-                : 'text-[#4A5A85] hover:text-[#1A56FF] px-3.5 py-1.5 rounded-full hover:bg-[#EAF0FF]'
+                ? 'text-white after:absolute after:bottom-0 after:left-0 after:right-0 after:h-0.5 after:bg-[#FFA033] after:rounded-full'
+                : 'text-white/80 hover:text-white'
             }`}
           >
             Profil Prodi
           </button>
 
-          {/* 3. Info OSJUR (Dropdown with Rangkaian Kegiatan, Dresscode, Penugasan, Pengumpulan) */}
+          {/* 3. Info OSJUR with Dropdown in the main nav list */}
           <div className="relative" ref={dropdownRef}>
             <button
               onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-              className={`text-sm font-semibold transition-all cursor-pointer whitespace-nowrap inline-flex items-center gap-1.5 ${
+              className={`text-xs font-bold uppercase tracking-wider transition-colors cursor-pointer relative py-1.5 inline-flex items-center gap-1.5 ${
                 isInfoOsjurActive
-                  ? 'bg-[#1A56FF] text-white rounded-full px-4 py-1.5 shadow-xs'
-                  : 'text-[#4A5A85] hover:text-[#1A56FF] px-3.5 py-1.5 rounded-full hover:bg-[#EAF0FF]'
+                  ? 'text-white after:absolute after:bottom-0 after:left-0 after:right-0 after:h-0.5 after:bg-[#FFA033] after:rounded-full'
+                  : 'text-white/80 hover:text-white'
               }`}
             >
               <span>Info OSJUR</span>
               <ChevronDown
-                className={`w-4 h-4 transition-transform duration-200 ${
+                className={`w-3.5 h-3.5 transition-transform duration-200 ${
                   isDropdownOpen ? 'rotate-180' : ''
-                } ${isInfoOsjurActive ? 'text-white' : 'text-[#4A5A85]'}`}
+                }`}
               />
             </button>
 
             {/* Dropdown Menu */}
             {isDropdownOpen && (
-              <div className="absolute top-full left-0 mt-2 w-64 bg-white rounded-[16px] border border-[#D6E2FF] shadow-lg p-2 z-50 animate-in fade-in zoom-in-95 duration-150">
-                <div className="px-3 py-1.5 border-b border-[#D6E2FF]/70 mb-1">
-                  <span className="text-[11px] font-bold uppercase tracking-wider text-[#1A56FF]">
+              <div className="absolute top-full left-0 mt-3 w-64 bg-white text-[#1A284E] rounded-2xl shadow-xl border border-slate-100 p-2 z-50 animate-in fade-in zoom-in-95 duration-150">
+                <div className="px-3 py-1.5 border-b border-slate-100 mb-1">
+                  <span className="text-[10px] font-extrabold uppercase tracking-wider text-[#1865F2]">
                     Panduan & Informasi OSJUR
                   </span>
                 </div>
@@ -131,16 +127,16 @@ export const Navbar: React.FC<NavbarProps> = ({
                         onNavigate(sub.id);
                         setIsDropdownOpen(false);
                       }}
-                      className={`w-full text-left px-3 py-2.5 rounded-[10px] transition-colors cursor-pointer flex flex-col ${
+                      className={`w-full text-left px-3.5 py-2.5 rounded-xl transition-colors cursor-pointer flex flex-col ${
                         isActive
-                          ? 'bg-[#EAF0FF] text-[#1A56FF]'
-                          : 'hover:bg-[#EAF0FF]/60 text-[#0A1A44]'
+                          ? 'bg-[#EBF3FF] text-[#1865F2]'
+                          : 'hover:bg-slate-50 text-[#1A284E]'
                       }`}
                     >
-                      <span className="text-sm font-bold leading-tight">
+                      <span className="text-xs font-bold leading-tight">
                         {sub.label}
                       </span>
-                      <span className="text-[11px] text-[#4A5A85] mt-0.5">
+                      <span className="text-[11px] text-slate-500 mt-0.5">
                         {sub.desc}
                       </span>
                     </button>
@@ -152,31 +148,37 @@ export const Navbar: React.FC<NavbarProps> = ({
 
           {/* 4. Dokumentasi */}
           <button
-            onClick={() => {
-              onNavigate('dokumentasi');
-              setIsDropdownOpen(false);
-            }}
-            className={`text-sm font-semibold transition-all cursor-pointer whitespace-nowrap ${
+            onClick={() => onNavigate('dokumentasi')}
+            className={`text-xs font-bold uppercase tracking-wider transition-colors cursor-pointer relative py-1.5 ${
               currentPage === 'dokumentasi'
-                ? 'bg-[#1A56FF] text-white rounded-full px-4 py-1.5 shadow-xs'
-                : 'text-[#4A5A85] hover:text-[#1A56FF] px-3.5 py-1.5 rounded-full hover:bg-[#EAF0FF]'
+                ? 'text-white after:absolute after:bottom-0 after:left-0 after:right-0 after:h-0.5 after:bg-[#FFA033] after:rounded-full'
+                : 'text-white/80 hover:text-white'
             }`}
           >
             Dokumentasi
           </button>
         </nav>
 
-        {/* Mobile Menu Button */}
-        <div className="flex items-center gap-2 lg:hidden">
+        {/* Action Button: "Kumpulkan Tugas Sekarang" */}
+        <div className="flex items-center gap-3">
+          <button
+            onClick={() => onNavigate('pengumpulan')}
+            className="hidden sm:inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#FFA033] hover:bg-[#F59020] text-white font-bold text-xs uppercase tracking-wider shadow-md hover:shadow-lg transition-all active:scale-95 cursor-pointer"
+          >
+            <span>Kumpulkan Tugas Sekarang</span>
+            <ArrowRight className="w-3.5 h-3.5" />
+          </button>
+
+          {/* Mobile Menu Button */}
           <button
             onClick={onToggleMobileMenu}
             aria-label={isMobileMenuOpen ? 'Tutup Menu' : 'Buka Menu'}
-            className="min-h-[44px] min-w-[44px] flex items-center justify-center rounded-full text-[#0A1A44] hover:bg-[#EAF0FF] transition-colors focus-visible:outline-2 focus-visible:outline-[#1A56FF]"
+            className="min-h-[44px] min-w-[44px] flex items-center justify-center rounded-xl bg-white/10 hover:bg-white/20 text-white transition-colors lg:hidden cursor-pointer"
           >
             {isMobileMenuOpen ? (
-              <X className="w-6 h-6 text-[#0A1A44]" />
+              <X className="w-6 h-6" />
             ) : (
-              <Menu className="w-6 h-6 text-[#0A1A44]" />
+              <Menu className="w-6 h-6" />
             )}
           </button>
         </div>
