@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import { Send, ExternalLink, Clock, Info, Link as LinkIcon, Settings2, Check, ArrowRight } from 'lucide-react';
+import { Send, ExternalLink, Clock, Info } from 'lucide-react';
 import { assignments } from '../../data/osjurData';
 
 export const DEFAULT_FORM_URL = 'https://forms.gle/';
 
 export const PengumpulanPage: React.FC = () => {
-  const [formUrl, setFormUrl] = useState<string>(() => {
+  const [formUrl] = useState<string>(() => {
     try {
       const saved = localStorage.getItem('osjur_custom_form_url');
       return saved && saved.trim() ? saved : DEFAULT_FORM_URL;
@@ -13,26 +13,6 @@ export const PengumpulanPage: React.FC = () => {
       return DEFAULT_FORM_URL;
     }
   });
-
-  const [isEditingUrl, setIsEditingUrl] = useState(false);
-  const [tempUrl, setTempUrl] = useState(formUrl);
-  const [saveSuccess, setSaveSuccess] = useState(false);
-
-  const handleSaveUrl = (e: React.FormEvent) => {
-    e.preventDefault();
-    const finalUrl = tempUrl.trim() || DEFAULT_FORM_URL;
-    setFormUrl(finalUrl);
-    try {
-      localStorage.setItem('osjur_custom_form_url', finalUrl);
-    } catch (e) {
-      console.error(e);
-    }
-    setSaveSuccess(true);
-    setTimeout(() => {
-      setSaveSuccess(false);
-      setIsEditingUrl(false);
-    }, 1000);
-  };
 
   return (
     <div className="space-y-10 md:space-y-12 pb-6">
@@ -64,67 +44,6 @@ export const PengumpulanPage: React.FC = () => {
           </div>
         </div>
 
-        {/* Link Form Settings Bar */}
-        <div className="pt-2 text-left">
-          {!isEditingUrl ? (
-            <div className="flex flex-wrap items-center justify-between gap-3 p-4 rounded-2xl bg-white border border-slate-100 shadow-xs text-xs">
-              <div className="flex items-center gap-2.5 text-slate-500 truncate">
-                <LinkIcon className="w-4 h-4 text-[#1865F2] shrink-0" />
-                <span className="font-extrabold text-[#1A284E]">Tautan Form Aktif:</span>
-                <span className="text-[#1865F2] truncate font-mono text-[11px] bg-[#EBF3FF] px-2.5 py-1 rounded-md">
-                  {formUrl}
-                </span>
-              </div>
-              <button
-                onClick={() => {
-                  setTempUrl(formUrl);
-                  setIsEditingUrl(true);
-                }}
-                className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-[#EBF3FF] hover:bg-[#D6E6FF] text-[#1865F2] font-bold text-xs transition-colors cursor-pointer shrink-0"
-              >
-                <Settings2 className="w-3.5 h-3.5" />
-                <span>Ubah Link Form</span>
-              </button>
-            </div>
-          ) : (
-            <form onSubmit={handleSaveUrl} className="p-4 rounded-2xl bg-white border border-[#1865F2] shadow-md space-y-3">
-              <label className="block text-xs font-bold text-[#1A284E]">
-                Masukkan Tautan Google Form Pengumpulan Tugas:
-              </label>
-              <div className="flex flex-col sm:flex-row items-center gap-2.5">
-                <input
-                  type="url"
-                  value={tempUrl}
-                  onChange={(e) => setTempUrl(e.target.value)}
-                  placeholder="https://forms.gle/..."
-                  className="flex-1 w-full px-4 py-2.5 rounded-xl border border-slate-200 text-xs text-[#1A284E] focus:outline-none focus:border-[#1865F2]"
-                />
-                <div className="flex items-center gap-2 w-full sm:w-auto">
-                  <button
-                    type="submit"
-                    className="flex-1 sm:flex-none px-5 py-2.5 rounded-full bg-[#1865F2] hover:bg-[#1255DC] text-white text-xs font-bold transition-all cursor-pointer flex items-center justify-center gap-1.5 shadow-sm"
-                  >
-                    {saveSuccess ? (
-                      <>
-                        <Check className="w-3.5 h-3.5" />
-                        <span>Tersimpan!</span>
-                      </>
-                    ) : (
-                      <span>Simpan Link</span>
-                    )}
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => setIsEditingUrl(false)}
-                    className="px-4 py-2.5 rounded-full bg-slate-100 text-slate-600 text-xs font-bold hover:bg-slate-200 cursor-pointer"
-                  >
-                    Batal
-                  </button>
-                </div>
-              </div>
-            </form>
-          )}
-        </div>
       </section>
 
       {/* 4 Kartu Pengumpulan */}

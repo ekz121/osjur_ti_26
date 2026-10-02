@@ -3,13 +3,17 @@ import { Camera, Eye, Calendar } from 'lucide-react';
 import { PhotoItem } from '../../types';
 import { industryPhotos, schoolPhotos } from '../../data/osjurData';
 import { ImageLightbox } from '../ImageLightbox';
-import { HmtiLogo } from '../HmtiLogo';
+import noPhotoDefault from '../../../No photo default.jpg';
 
 export const DokumentasiPage: React.FC = () => {
   const [selectedPhoto, setSelectedPhoto] = useState<PhotoItem | null>(null);
 
   // Gabungkan seluruh foto dokumentasi
-  const allPhotos = [...schoolPhotos, ...industryPhotos];
+  const allPhotos = [...schoolPhotos, ...industryPhotos].map((photo) => ({
+    ...photo,
+    src: noPhotoDefault,
+    alt: 'Foto dokumentasi belum tersedia',
+  }));
 
   return (
     <div className="space-y-10 md:space-y-12 pb-6">

@@ -97,13 +97,10 @@ export const BerandaPage: React.FC<BerandaPageProps> = ({ onNavigate }) => {
       {/* 1. HERO SECTION WITH BLUE BACKGROUND & ORGANIC WAVE */}
       <section className="relative -mt-6 md:-mt-10 -mx-4 sm:-mx-6 bg-gradient-to-b from-[#1865F2] to-[#1255DC] text-white pt-8 pb-20 md:pt-14 md:pb-32 px-4 sm:px-8 overflow-hidden">
         {/* Floating Geometric Background Elements from Mockup */}
-        <div className="absolute top-10 left-10 w-24 h-24 border border-white/15 rounded-full pointer-events-none" />
         <div className="absolute top-36 left-1/4 w-3 h-3 bg-white/30 rounded-full pointer-events-none" />
-        <div className="absolute bottom-28 left-12 w-6 h-6 border-2 border-white/20 rotate-45 pointer-events-none" />
         <div className="absolute top-14 right-1/3 w-4 h-4 text-white/30 font-mono text-xl pointer-events-none">
           △
         </div>
-        <div className="absolute top-24 right-16 w-8 h-8 rounded-full border border-dashed border-white/30 pointer-events-none" />
 
         <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative z-10">
           {/* Left Text Column */}
@@ -188,9 +185,6 @@ export const BerandaPage: React.FC<BerandaPageProps> = ({ onNavigate }) => {
 
       {/* 2. DUAL FEATURED CALLOUT CARDS (FULL 3D CARTOON per Permintaan User) */}
       <section className="relative z-20 -mt-10 sm:-mt-16 max-w-5xl mx-auto">
-        <div className="absolute -left-6 top-8 hidden md:block w-12 h-12 opacity-40 pointer-events-none">
-          <div className="w-full h-full rounded-full border-4 border-dashed border-[#FFA033]" />
-        </div>
         <div className="absolute -right-6 -bottom-4 hidden md:block opacity-30 pointer-events-none">
           <div className="grid grid-cols-4 gap-1.5">
             {[...Array(16)].map((_, i) => (
@@ -267,7 +261,6 @@ export const BerandaPage: React.FC<BerandaPageProps> = ({ onNavigate }) => {
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-black text-[#1A284E] tracking-tight">
             5 Kompetensi Utama D3 Teknologi Informasi
           </h2>
-          <div className="w-12 h-1 bg-[#1865F2] rounded-full mx-auto mt-2" />
           <p className="text-xs sm:text-sm text-slate-500 max-w-lg mx-auto pt-1">
             Kombinasi keahlian praktis yang dirancang selaras dengan standar industri teknologi digital modern.
           </p>
@@ -330,7 +323,6 @@ export const BerandaPage: React.FC<BerandaPageProps> = ({ onNavigate }) => {
           <h2 className="text-2xl sm:text-3xl font-black text-[#1A284E] tracking-tight">
             Pintasan Cepat Mahasiswa Baru
           </h2>
-          <div className="w-12 h-1 bg-[#1865F2] rounded-full mx-auto mt-2" />
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
