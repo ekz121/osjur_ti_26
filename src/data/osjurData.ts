@@ -6,6 +6,14 @@ import {
   DaySchedule,
   PhotoItem,
 } from '../types';
+import schoolBannerImage from '../assets/images/photo_school_banner_1790948130717.jpg';
+import schoolClassImage from '../assets/images/photo_school_class_1790948149409.jpg';
+import schoolHandoverImage from '../assets/images/photo_school_handover_1790948163047.jpg';
+import schoolDemoImage from '../assets/images/doc_school_demo_1790945984145.jpg';
+import industryPetrokimiaImage from '../assets/images/photo_ind_petrokimia_1790948174964.jpg';
+import industryOfficeImage from '../assets/images/photo_ind_office_1790948191590.jpg';
+import industryDigitalImage from '../assets/images/doc_ind_digital_1790946027360.jpg';
+import industryDatacenterImage from '../assets/images/doc_ind_datacenter_1790946046197.jpg';
 
 export const competencies: Competency[] = [
   {
@@ -226,7 +234,7 @@ export const schoolPhotos: PhotoItem[] = [
     id: 'sch-1',
     title: '',
     date: '',
-    src: '/src/assets/images/photo_school_banner_1790948130717.jpg',
+    src: schoolBannerImage,
     category: 'school',
     alt: 'Dokumentasi OSJUR D3 TI',
   },
@@ -234,7 +242,7 @@ export const schoolPhotos: PhotoItem[] = [
     id: 'sch-2',
     title: '',
     date: '',
-    src: '/src/assets/images/photo_school_class_1790948149409.jpg',
+    src: schoolClassImage,
     category: 'school',
     alt: 'Dokumentasi OSJUR D3 TI',
   },
@@ -242,7 +250,7 @@ export const schoolPhotos: PhotoItem[] = [
     id: 'sch-3',
     title: '',
     date: '',
-    src: '/src/assets/images/photo_school_handover_1790948163047.jpg',
+    src: schoolHandoverImage,
     category: 'school',
     alt: 'Dokumentasi OSJUR D3 TI',
   },
@@ -250,7 +258,7 @@ export const schoolPhotos: PhotoItem[] = [
     id: 'sch-4',
     title: '',
     date: '',
-    src: '/src/assets/images/doc_school_demo_1790945984145.jpg',
+    src: schoolDemoImage,
     category: 'school',
     alt: 'Dokumentasi OSJUR D3 TI',
   },
@@ -261,7 +269,7 @@ export const industryPhotos: PhotoItem[] = [
     id: 'ind-1',
     title: '',
     date: '',
-    src: '/src/assets/images/photo_ind_petrokimia_1790948174964.jpg',
+    src: industryPetrokimiaImage,
     category: 'industry',
     alt: 'Dokumentasi OSJUR D3 TI',
   },
@@ -269,7 +277,7 @@ export const industryPhotos: PhotoItem[] = [
     id: 'ind-2',
     title: '',
     date: '',
-    src: '/src/assets/images/photo_ind_office_1790948191590.jpg',
+    src: industryOfficeImage,
     category: 'industry',
     alt: 'Dokumentasi OSJUR D3 TI',
   },
@@ -277,7 +285,7 @@ export const industryPhotos: PhotoItem[] = [
     id: 'ind-3',
     title: '',
     date: '',
-    src: '/src/assets/images/doc_ind_digital_1790946027360.jpg',
+    src: industryDigitalImage,
     category: 'industry',
     alt: 'Dokumentasi OSJUR D3 TI',
   },
@@ -285,7 +293,7 @@ export const industryPhotos: PhotoItem[] = [
     id: 'ind-4',
     title: '',
     date: '',
-    src: '/src/assets/images/doc_ind_datacenter_1790946046197.jpg',
+    src: industryDatacenterImage,
     category: 'industry',
     alt: 'Dokumentasi OSJUR D3 TI',
   },

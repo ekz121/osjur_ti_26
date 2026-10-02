@@ -14,6 +14,9 @@ import {
 } from 'lucide-react';
 import { PageId } from '../../types';
 import { competencies } from '../../data/osjurData';
+import heroEducationImage from '../../assets/images/hero_edu_vector_1790964103612.jpg';
+import studentCartoonImage from '../../assets/images/cartoon_3d_student_1790964924354.jpg';
+import mentorCartoonImage from '../../assets/images/cartoon_3d_mentor_1790964941989.jpg';
 
 interface BerandaPageProps {
   onNavigate: (page: PageId) => void;
@@ -150,7 +153,7 @@ export const BerandaPage: React.FC<BerandaPageProps> = ({ onNavigate }) => {
 
               <div className="relative z-10 rounded-3xl overflow-hidden border-4 border-white/20 shadow-2xl bg-[#0F49BE]">
                 <img
-                  src="/src/assets/images/hero_edu_vector_1790964103612.jpg"
+                  src={heroEducationImage}
                   alt="Ilustrasi Edukasi OSJUR D3 TI"
                   className="w-full h-auto object-cover"
                 />
@@ -215,7 +218,7 @@ export const BerandaPage: React.FC<BerandaPageProps> = ({ onNavigate }) => {
             {/* Blue Corner Box with Full 3D Cartoon Student */}
             <div className="w-28 sm:w-36 h-28 sm:h-36 rounded-2xl bg-gradient-to-br from-[#1865F2] to-[#0E4DC5] overflow-hidden shrink-0 relative flex items-center justify-center shadow-inner">
               <img
-                src="/src/assets/images/cartoon_3d_student_1790964924354.jpg"
+                src={studentCartoonImage}
                 alt="3D Kartun Mahasiswa D3 TI"
                 className="w-full h-full object-cover hover:scale-110 transition-transform duration-300"
               />
@@ -243,7 +246,7 @@ export const BerandaPage: React.FC<BerandaPageProps> = ({ onNavigate }) => {
             {/* Purple Corner Box with Full 3D Cartoon Mentor */}
             <div className="w-28 sm:w-36 h-28 sm:h-36 rounded-2xl bg-gradient-to-br from-[#8B5CF6] to-[#6D28D9] overflow-hidden shrink-0 relative flex items-center justify-center shadow-inner">
               <img
-                src="/src/assets/images/cartoon_3d_mentor_1790964941989.jpg"
+                src={mentorCartoonImage}
                 alt="3D Kartun Mentor OSJUR D3 TI"
                 className="w-full h-full object-cover hover:scale-110 transition-transform duration-300"
               />
