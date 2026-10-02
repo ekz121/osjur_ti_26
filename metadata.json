@@ -1,0 +1,7 @@
+{
+  "name": "OSJUR D3 Teknologi Informasi 2026 - Politeknik Semen Indonesia",
+  "description": "Website resmi Orientasi Studi Jurusan (OSJUR) D3 Teknologi Informasi Politeknik Semen Indonesia untuk mahasiswa baru.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
+
