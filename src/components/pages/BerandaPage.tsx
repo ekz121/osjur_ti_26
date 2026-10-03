@@ -98,36 +98,36 @@ export const BerandaPage: React.FC<BerandaPageProps> = ({ onNavigate }) => {
   return (
     <div className="space-y-12 md:space-y-16 pb-6">
       {/* 1. HERO SECTION WITH BLUE BACKGROUND & ORGANIC WAVE */}
-      <section className="relative -mt-6 md:-mt-10 -mx-4 sm:-mx-6 bg-gradient-to-b from-[#1865F2] to-[#1255DC] text-white pt-8 pb-20 md:pt-14 md:pb-32 px-4 sm:px-8 overflow-hidden">
+      <section className="relative -mt-6 -mx-4 overflow-hidden bg-gradient-to-b from-[#1865F2] to-[#1255DC] px-4 pb-14 pt-6 text-white sm:-mx-6 sm:px-8 sm:pb-20 sm:pt-8 md:-mt-10 md:pt-14 md:pb-32">
         {/* Floating Geometric Background Elements from Mockup */}
         <div className="absolute top-36 left-1/4 w-3 h-3 bg-white/30 rounded-full pointer-events-none" />
         <div className="absolute top-14 right-1/3 w-4 h-4 text-white/30 font-mono text-xl pointer-events-none">
           △
         </div>
 
-        <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative z-10">
+        <div className="relative z-10 mx-auto grid max-w-6xl grid-cols-[minmax(0,1.22fr)_minmax(6.5rem,.78fr)] items-center gap-3 sm:grid-cols-[minmax(0,1.3fr)_minmax(11rem,.8fr)] sm:gap-6 lg:grid-cols-12 lg:gap-8">
           {/* Left Text Column */}
-          <div className="lg:col-span-7 space-y-5 text-left">
-            <div className="inline-block">
+          <div className="space-y-3 text-left sm:space-y-5 lg:col-span-7">
+            <div className="hidden sm:inline-block">
               <span className="text-xs md:text-sm font-bold tracking-widest text-white/90 uppercase">
                 A PLATFORM FOR LEARNERS AND D3 TI MABA
               </span>
             </div>
 
-            <h1 className="text-3xl sm:text-5xl md:text-6xl font-black tracking-tight leading-[1.12] text-white">
+            <h1 className="text-2xl font-black tracking-tight leading-[1.05] text-white sm:text-5xl sm:leading-[1.12] md:text-6xl">
               Baris Pertamamu <br className="hidden sm:block" />
               Dimulai di Sini
             </h1>
 
-            <p className="text-sm sm:text-base md:text-lg text-white/90 max-w-xl leading-relaxed">
+            <p className="max-w-xl text-xs leading-relaxed text-white/90 sm:text-base md:text-lg">
               Halo, Maba! Semua informasi resmi OSJUR D3 Teknologi Informasi
               Politeknik Semen Indonesia ada di satu tempat praktis.
             </p>
 
-            <div className="pt-3 flex flex-wrap items-center gap-4">
+            <div className="flex flex-wrap items-center gap-2 pt-1 sm:gap-4 sm:pt-3">
               <button
                 onClick={() => onNavigate('kegiatan')}
-                className="px-7 py-3.5 rounded-full bg-white text-[#1865F2] hover:bg-white/90 font-extrabold text-xs sm:text-sm tracking-wide shadow-lg hover:shadow-xl transition-all cursor-pointer inline-flex items-center gap-2 active:scale-95"
+                className="inline-flex items-center gap-1.5 rounded-full bg-white px-3 py-2 text-[10px] font-extrabold tracking-wide text-[#1865F2] shadow-lg transition-all hover:bg-white/90 hover:shadow-xl active:scale-95 sm:gap-2 sm:px-7 sm:py-3.5 sm:text-sm cursor-pointer"
               >
                 <span>Lihat Jadwal OSJUR</span>
                 <ArrowRight className="w-4 h-4 text-[#FFA033]" />
@@ -135,7 +135,7 @@ export const BerandaPage: React.FC<BerandaPageProps> = ({ onNavigate }) => {
 
               <button
                 onClick={() => onNavigate('profil')}
-                className="px-6 py-3.5 rounded-full bg-white/15 hover:bg-white/25 text-white font-bold text-xs sm:text-sm tracking-wide border border-white/25 transition-all cursor-pointer"
+                className="hidden rounded-full border border-white/25 bg-white/15 px-6 py-3.5 text-xs font-bold tracking-wide text-white transition-all hover:bg-white/25 sm:inline-flex sm:text-sm cursor-pointer"
               >
                 Profil Jurusan
               </button>
@@ -143,15 +143,15 @@ export const BerandaPage: React.FC<BerandaPageProps> = ({ onNavigate }) => {
           </div>
 
           {/* Right Vector Illustration Column */}
-          <div className="lg:col-span-5 relative flex justify-center lg:justify-end">
+          <div className="relative flex min-w-0 justify-end lg:col-span-5 lg:justify-end">
             <div className="relative w-full max-w-md">
               <div className="absolute inset-0 bg-white/10 rounded-full blur-2xl transform scale-90" />
 
-              <div className="absolute -top-3 right-6 z-20 w-10 h-10 rounded-full bg-white text-[#FFA033] shadow-md flex items-center justify-center font-bold text-lg animate-bounce">
+              <div className="absolute -top-2 right-1 z-20 flex h-7 w-7 items-center justify-center rounded-full bg-white text-sm font-bold text-[#FFA033] shadow-md sm:-top-3 sm:right-6 sm:h-10 sm:w-10 sm:text-lg animate-bounce">
                 ?
               </div>
 
-              <div className="relative z-10 rounded-3xl overflow-hidden border-4 border-white/20 shadow-2xl bg-[#0F49BE]">
+              <div className="relative z-10 overflow-hidden rounded-2xl border-2 border-white/20 bg-[#0F49BE] shadow-xl sm:rounded-3xl sm:border-4 sm:shadow-2xl">
                 <img
                   src={heroEducationImage}
                   alt="Ilustrasi Edukasi OSJUR D3 TI"
@@ -159,7 +159,7 @@ export const BerandaPage: React.FC<BerandaPageProps> = ({ onNavigate }) => {
                 />
               </div>
 
-              <div className="absolute -bottom-4 -left-4 z-20 bg-white text-[#1A284E] px-4 py-2 rounded-2xl shadow-xl border border-slate-100 flex items-center gap-2.5">
+              <div className="absolute -bottom-4 -left-4 z-20 hidden items-center gap-2.5 rounded-2xl border border-slate-100 bg-white px-4 py-2 text-[#1A284E] shadow-xl sm:flex">
                 <div className="w-8 h-8 rounded-xl bg-[#FFA033] text-white flex items-center justify-center font-bold text-xs">
                   TI
                 </div>

@@ -6,7 +6,6 @@
 import React, { useState, useEffect } from 'react';
 import { PageId } from './types';
 import { Navbar } from './components/Navbar';
-import { BottomNav } from './components/BottomNav';
 import { MobileDrawer } from './components/MobileDrawer';
 import { Footer } from './components/Footer';
 import { BerandaPage } from './components/pages/BerandaPage';
@@ -78,9 +77,6 @@ export default function App() {
 
       {/* Footer Biru */}
       <Footer onNavigate={handleNavigate} />
-
-      {/* Fixed Bottom Navigation for Mobile (4 items: Beranda, Profil, Info OSJUR, Dokumentasi) */}
-      <BottomNav currentPage={currentPage} onNavigate={handleNavigate} />
     </div>
   );
 }

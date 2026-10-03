@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { X, ChevronRight, ChevronDown, Phone, Instagram } from 'lucide-react';
 import { PageId } from '../types';
 import { infoOsjurSubItems } from './Navbar';
@@ -17,6 +17,19 @@ export const MobileDrawer: React.FC<MobileDrawerProps> = ({
   onNavigate,
 }) => {
   const [isInfoOsjurExpanded, setIsInfoOsjurExpanded] = useState(true);
+  const closeButtonRef = useRef<HTMLButtonElement>(null);
+
+  useEffect(() => {
+    if (!isOpen) return;
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') onClose();
+    };
+
+    closeButtonRef.current?.focus();
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [isOpen, onClose]);
 
   if (!isOpen) return null;
 
@@ -28,11 +41,15 @@ export const MobileDrawer: React.FC<MobileDrawerProps> = ({
 
   return (
     <div
-      className="fixed inset-0 z-50 lg:hidden flex flex-col justify-end bg-black/60 backdrop-blur-2xs animate-in fade-in duration-200"
+      className="fixed inset-0 z-50 flex justify-end bg-[#061b4f]/45 lg:hidden"
       onClick={onClose}
     >
-      <div
-        className="w-full bg-white rounded-t-3xl border-t border-slate-100 max-h-[85vh] overflow-y-auto shadow-2xl flex flex-col"
+      <aside
+        id="mobile-navigation"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Menu navigasi"
+        className="flex h-full w-[min(22rem,calc(100%-1.25rem))] flex-col overflow-y-auto bg-white shadow-2xl"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header (Clean & Modern, Tanpa Logo sesuai permintaan user) */}
@@ -46,9 +63,10 @@ export const MobileDrawer: React.FC<MobileDrawerProps> = ({
             </h2>
           </div>
           <button
+            ref={closeButtonRef}
             onClick={onClose}
             aria-label="Tutup menu"
-            className="w-9 h-9 rounded-full bg-white/15 text-white flex items-center justify-center hover:bg-white/25 transition-colors cursor-pointer"
+            className="flex min-h-[44px] min-w-[44px] items-center justify-center rounded-xl bg-white/15 text-white transition-colors hover:bg-white/25 cursor-pointer"
           >
             <X className="w-5 h-5" />
           </button>
@@ -168,7 +186,7 @@ export const MobileDrawer: React.FC<MobileDrawerProps> = ({
             <span>@osjur.d3ti</span>
           </div>
         </div>
-      </div>
+      </aside>
     </div>
   );
 };

@@ -172,14 +172,17 @@ export const Navbar: React.FC<NavbarProps> = ({
           {/* Mobile Menu Button */}
           <button
             onClick={onToggleMobileMenu}
-            aria-label={isMobileMenuOpen ? 'Tutup Menu' : 'Buka Menu'}
-            className="min-h-[44px] min-w-[44px] flex items-center justify-center rounded-xl bg-white/10 hover:bg-white/20 text-white transition-colors lg:hidden cursor-pointer"
+            aria-label={isMobileMenuOpen ? 'Tutup menu' : 'Buka menu'}
+            aria-expanded={isMobileMenuOpen}
+            aria-controls="mobile-navigation"
+            className="min-h-[44px] inline-flex items-center justify-center gap-1.5 rounded-xl bg-white/10 px-3 text-xs font-bold text-white transition-colors hover:bg-white/20 lg:hidden cursor-pointer"
           >
             {isMobileMenuOpen ? (
-              <X className="w-6 h-6" />
+              <X className="w-5 h-5" />
             ) : (
-              <Menu className="w-6 h-6" />
+              <Menu className="w-5 h-5" />
             )}
+            <span>Menu</span>
           </button>
         </div>
       </div>
