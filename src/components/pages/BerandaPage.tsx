@@ -14,7 +14,7 @@ import {
 } from 'lucide-react';
 import { PageId } from '../../types';
 import { competencies } from '../../data/osjurData';
-import heroEducationImage from '../../assets/images/hero_edu_vector_1790964103612.jpg';
+import heroVotechImage from '../../assets/images/this2.png';
 import studentCartoonImage from '../../assets/images/cartoon_3d_student_1790964924354.jpg';
 import mentorCartoonImage from '../../assets/images/cartoon_3d_mentor_1790964941989.jpg';
 
@@ -88,7 +88,7 @@ export const BerandaPage: React.FC<BerandaPageProps> = ({ onNavigate }) => {
     },
     {
       page: 'dokumentasi',
-      title: 'Galeri Dokumentasi',
+      title: 'Galeri',
       description: 'Momen seru kegiatan jurusan',
       icon: Camera,
       accentColor: 'bg-[#10B981]',
@@ -120,8 +120,8 @@ export const BerandaPage: React.FC<BerandaPageProps> = ({ onNavigate }) => {
             </h1>
 
             <p className="max-w-xl text-xs leading-relaxed text-white/90 sm:text-base md:text-lg">
-              Halo, Maba! Semua informasi resmi OSJUR D3 Teknologi Informasi
-              Politeknik Semen Indonesia ada di satu tempat praktis.
+              <span className="block">Halo, Gtech! Sudahkah kamu siap untuk mengikuti VOTECH Politeknik Semen Indonesia?</span>
+              <span className="mt-2 block">Semua informasi dapat kamu lihat disini</span>
             </p>
 
             <div className="flex flex-wrap items-center gap-2 pt-1 sm:gap-4 sm:pt-3">
@@ -129,7 +129,7 @@ export const BerandaPage: React.FC<BerandaPageProps> = ({ onNavigate }) => {
                 onClick={() => onNavigate('kegiatan')}
                 className="inline-flex items-center gap-1.5 rounded-full bg-white px-3 py-2 text-[10px] font-extrabold tracking-wide text-[#1865F2] shadow-lg transition-all hover:bg-white/90 hover:shadow-xl active:scale-95 sm:gap-2 sm:px-7 sm:py-3.5 sm:text-sm cursor-pointer"
               >
-                <span>Lihat Jadwal OSJUR</span>
+                <span>Lihat Jadwal VOTECH</span>
                 <ArrowRight className="w-4 h-4 text-[#FFA033]" />
               </button>
 
@@ -147,15 +147,11 @@ export const BerandaPage: React.FC<BerandaPageProps> = ({ onNavigate }) => {
             <div className="relative w-full max-w-md">
               <div className="absolute inset-0 bg-white/10 rounded-full blur-2xl transform scale-90" />
 
-              <div className="absolute -top-2 right-1 z-20 flex h-7 w-7 items-center justify-center rounded-full bg-white text-sm font-bold text-[#FFA033] shadow-md sm:-top-3 sm:right-6 sm:h-10 sm:w-10 sm:text-lg animate-bounce">
-                ?
-              </div>
-
-              <div className="relative z-10 overflow-hidden rounded-2xl border-2 border-white/20 bg-[#0F49BE] shadow-xl sm:rounded-3xl sm:border-4 sm:shadow-2xl">
+              <div className="relative z-10 flex aspect-[1.2/1] items-center justify-center">
                 <img
-                  src={heroEducationImage}
-                  alt="Ilustrasi Edukasi OSJUR D3 TI"
-                  className="w-full h-auto object-cover"
+                  src={heroVotechImage}
+                  alt="Ilustrasi utama VOTECH Politeknik Semen Indonesia"
+                  className="h-full w-full object-contain drop-shadow-2xl"
                 />
               </div>
 
@@ -165,7 +161,7 @@ export const BerandaPage: React.FC<BerandaPageProps> = ({ onNavigate }) => {
                 </div>
                 <div className="text-left">
                   <p className="text-[11px] font-bold text-[#1A284E] leading-tight">
-                    OSJUR D3 TI 2026
+                    VOTECH 2026
                   </p>
                   <p className="text-[10px] text-slate-500">Politeknik Semen Indonesia</p>
                 </div>
@@ -225,11 +221,11 @@ export const BerandaPage: React.FC<BerandaPageProps> = ({ onNavigate }) => {
             </div>
           </div>
 
-          {/* Card 2: Panduan OSJUR (Full 3D Cartoon Mentor) */}
+          {/* Card 2: Panduan VOTECH */}
           <div className="bg-white rounded-3xl p-6 sm:p-7 shadow-[0_10px_30px_-5px_rgba(0,0,0,0.06)] border border-slate-100 flex items-center justify-between gap-4 group hover:shadow-lg transition-all">
             <div className="space-y-3 flex-1">
               <h2 className="text-xl font-black text-[#1A284E] tracking-tight">
-                Panduan OSJUR ?
+                Panduan VOTECH
               </h2>
               <p className="text-xs sm:text-sm text-slate-500 leading-relaxed">
                 Jadwal lengkap kegiatan, aturan dresscode, dan penugasan.
@@ -247,7 +243,7 @@ export const BerandaPage: React.FC<BerandaPageProps> = ({ onNavigate }) => {
             <div className="w-28 sm:w-36 h-28 sm:h-36 rounded-2xl bg-gradient-to-br from-[#8B5CF6] to-[#6D28D9] overflow-hidden shrink-0 relative flex items-center justify-center shadow-inner">
               <img
                 src={mentorCartoonImage}
-                alt="3D Kartun Mentor OSJUR D3 TI"
+                alt="3D Kartun Mentor VOTECH"
                 className="w-full h-full object-cover hover:scale-110 transition-transform duration-300"
               />
             </div>
@@ -371,7 +367,7 @@ export const BerandaPage: React.FC<BerandaPageProps> = ({ onNavigate }) => {
             GET STARTED NOW
           </span>
           <h2 className="text-2xl sm:text-3xl font-black text-[#1A284E] tracking-tight leading-tight">
-            Sudah Menyelesaikan Tugas OSJUR Kamu?
+            Sudah Menyelesaikan Tugas VOTECH Kamu?
           </h2>
           <p className="text-xs sm:text-sm text-slate-500 leading-relaxed">
             Pastikan seluruh file penugasan telah siap sesuai instruksi dan format yang ditentukan

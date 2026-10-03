@@ -59,7 +59,7 @@ export const MobileDrawer: React.FC<MobileDrawerProps> = ({
               NAVIGASI RESMI
             </span>
             <h2 className="text-lg font-black text-white leading-tight">
-              OSJUR D3 TI 2026
+              VOTECH 2026
             </h2>
           </div>
           <button
@@ -118,7 +118,7 @@ export const MobileDrawer: React.FC<MobileDrawerProps> = ({
                 isInfoOsjurChild ? 'text-[#1865F2]' : 'text-[#1A284E]'
               }`}
             >
-              <span>Info OSJUR</span>
+              <span>Info VOTECH</span>
               <ChevronDown
                 className={`w-4 h-4 transition-transform duration-200 ${
                   isInfoOsjurExpanded ? 'rotate-180' : ''
@@ -168,7 +168,7 @@ export const MobileDrawer: React.FC<MobileDrawerProps> = ({
                 : 'text-[#1A284E] hover:bg-slate-50'
             }`}
           >
-            <span>Dokumentasi Kegiatan</span>
+            <span>Galeri Kegiatan</span>
             <ChevronRight
               className={`w-4 h-4 ${currentPage === 'dokumentasi' ? 'text-white' : 'text-slate-400'}`}
             />

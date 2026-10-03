@@ -6,14 +6,10 @@ import {
   DaySchedule,
   PhotoItem,
 } from '../types';
-import schoolBannerImage from '../assets/images/photo_school_banner_1790948130717.jpg';
-import schoolClassImage from '../assets/images/photo_school_class_1790948149409.jpg';
-import schoolHandoverImage from '../assets/images/photo_school_handover_1790948163047.jpg';
-import schoolDemoImage from '../assets/images/doc_school_demo_1790945984145.jpg';
-import industryPetrokimiaImage from '../assets/images/photo_ind_petrokimia_1790948174964.jpg';
-import industryOfficeImage from '../assets/images/photo_ind_office_1790948191590.jpg';
-import industryDigitalImage from '../assets/images/doc_ind_digital_1790946027360.jpg';
-import industryDatacenterImage from '../assets/images/doc_ind_datacenter_1790946046197.jpg';
+import schoolGroupImage from '../assets/images/gallery_it_go_to_school_1.jpeg';
+import schoolHandoverImage from '../assets/images/gallery_it_go_to_school_2.jpeg';
+import industryPetrokimiaImage from '../assets/images/gallery_kunjungan_industri_1.jpeg';
+import industryOfficeImage from '../assets/images/gallery_kunjungan_industri_2.jpeg';
 
 export const competencies: Competency[] = [
   {
@@ -86,7 +82,7 @@ export const schedules: DaySchedule[] = [
       },
       {
         time: '08.00',
-        name: 'Pembukaan OSJUR',
+        name: 'Pembukaan VOTECH',
         location: 'Aula Utama',
         type: 'wajib',
       },
@@ -154,7 +150,7 @@ export const schedules: DaySchedule[] = [
       },
       {
         time: '15.00',
-        name: 'Penutupan OSJUR',
+        name: 'Penutupan VOTECH',
         location: 'Aula Utama',
         type: 'wajib',
       },
@@ -188,113 +184,79 @@ export const dresscodes: DayDresscode[] = [
 
 export const assignments: Assignment[] = [
   {
-    id: 'tugas-01',
-    number: 'Tugas 01',
-    title: 'Perkenalan Diri Kreatif',
-    description: 'Buat video singkat 1 menit untuk memperkenalkan dirimu.',
-    deadline: 'Hari 1, 21.00',
-    detail:
-      'Video berdurasi maksimal 60 detik berisi nama, asal sekolah, hobi, dan alasan memilih D3 TI Politeknik Semen Indonesia. Unggah di Google Drive atau YouTube (Unlisted).',
+    id: 'individu',
+    number: '01',
+    title: 'Penugasan Individu',
+    description: 'Dikerjakan oleh setiap peserta VOTECH.',
+    deadline: 'Ikuti arahan panitia',
+    detail: 'Selesaikan seluruh butir penugasan individu berikut.',
     type: 'Individu',
+    items: [
+      'Upload Twibbon',
+      'Wajib Connect LinkedIn minimal 5 teman sekelas',
+      'Membuat Roadmap Lulusan',
+    ],
+    note: 'Roadmap Lulusan dikerjakan saat pelaksanaan VOTECH pada Sabtu, 10 Oktober 2026.',
   },
   {
-    id: 'tugas-02',
-    number: 'Tugas 02',
-    title: 'Esai Singkat: Teknologi Impianku',
-    description: 'Tulis 300 kata tentang teknologi yang ingin kamu buat.',
-    deadline: 'Hari 2, 21.00',
-    detail:
-      'Tuliskan ide inovatif teknologi digital atau aplikasi yang bisa menyelesaikan masalah nyata di sekitarmu dalam format PDF/Google Docs sebanyak 300 kata.',
-    type: 'Individu',
-  },
-  {
-    id: 'tugas-03',
-    number: 'Tugas 03',
-    title: 'Desain Poster Digital',
-    description: 'Buat poster bertema OSJUR D3 TI dengan aplikasi desain bebas.',
-    deadline: 'Hari 2, 23.59',
-    detail:
-      'Gunakan Canva, Figma, Photoshop, atau software pilihanmu. Tema: Bangga Menjadi Mahasiswa D3 Teknologi Informasi Politeknik Semen Indonesia. Format PNG/PDF resolusi tajam.',
-    type: 'Individu',
-  },
-  {
-    id: 'tugas-04',
-    number: 'Tugas 04',
-    title: 'Mini Project Kelompok',
-    description: 'Bangun halaman web sederhana bersama timmu.',
-    deadline: 'Hari 3, 12.00',
-    detail:
-      'Kerjakan bersama kelompok OSJUR. Buat halaman web statis sederhana bertema profil kelompok atau portofolio tim menggunakan HTML & CSS.',
+    id: 'kelompok',
+    number: '02',
+    title: 'Penugasan Kelompok',
+    description: 'Dikerjakan dan dipresentasikan bersama kelompok.',
+    deadline: 'Saat pelaksanaan VOTECH',
+    detail: 'Siapkan identitas kelas dan presentasi singkat.',
     type: 'Kelompok',
+    items: [
+      'Membuat Logo Kelas + Filosofi Logo tersebut',
+      'Mempresentasikan selama 2 menit pada saat pelaksanaan VOTECH',
+    ],
+  },
+  {
+    id: 'angkatan',
+    number: '03',
+    title: 'Penugasan Angkatan',
+    description: 'Dikerjakan bersama seluruh peserta satu angkatan.',
+    deadline: 'Dijelaskan saat pelaksanaan',
+    detail: 'Ketentuan lengkap akan dijelaskan saat pelaksanaan VOTECH.',
+    type: 'Angkatan',
+    items: [
+      'Membuat Akun Instagram Kelas',
+      'Membentuk Struktural Kelas',
+      'Menentukan Hasil/Voting',
+    ],
   },
 ];
 
 export const schoolPhotos: PhotoItem[] = [
   {
     id: 'sch-1',
-    title: '',
-    date: '',
-    src: schoolBannerImage,
+    title: 'IT Go to School',
+    src: schoolGroupImage,
     category: 'school',
-    alt: 'Dokumentasi OSJUR D3 TI',
+    alt: 'Kegiatan IT Go to School bersama siswa dan mahasiswa Teknologi Informasi',
   },
   {
     id: 'sch-2',
-    title: '',
-    date: '',
-    src: schoolClassImage,
-    category: 'school',
-    alt: 'Dokumentasi OSJUR D3 TI',
-  },
-  {
-    id: 'sch-3',
-    title: '',
-    date: '',
+    title: 'IT Go to School',
     src: schoolHandoverImage,
     category: 'school',
-    alt: 'Dokumentasi OSJUR D3 TI',
-  },
-  {
-    id: 'sch-4',
-    title: '',
-    date: '',
-    src: schoolDemoImage,
-    category: 'school',
-    alt: 'Dokumentasi OSJUR D3 TI',
+    alt: 'Penyerahan apresiasi dalam kegiatan IT Go to School',
   },
 ];
 
 export const industryPhotos: PhotoItem[] = [
   {
     id: 'ind-1',
-    title: '',
-    date: '',
+    title: 'Kunjungan Industri',
     src: industryPetrokimiaImage,
     category: 'industry',
-    alt: 'Dokumentasi OSJUR D3 TI',
+    alt: 'Mahasiswa Teknologi Informasi dalam kegiatan kunjungan industri',
   },
   {
     id: 'ind-2',
-    title: '',
-    date: '',
+    title: 'Kunjungan Industri',
     src: industryOfficeImage,
     category: 'industry',
-    alt: 'Dokumentasi OSJUR D3 TI',
-  },
-  {
-    id: 'ind-3',
-    title: '',
-    date: '',
-    src: industryDigitalImage,
-    category: 'industry',
-    alt: 'Dokumentasi OSJUR D3 TI',
-  },
-  {
-    id: 'ind-4',
-    title: '',
-    date: '',
-    src: industryDatacenterImage,
-    category: 'industry',
-    alt: 'Dokumentasi OSJUR D3 TI',
+    alt: 'Mahasiswa Teknologi Informasi berkunjung ke Petrokimia Gresik',
   },
 ];

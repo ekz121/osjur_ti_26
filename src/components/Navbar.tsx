@@ -58,7 +58,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           </div>
           <div className="flex flex-col">
             <span className="font-extrabold text-base md:text-lg tracking-tight text-white leading-tight">
-              OSJUR D3 TI
+              VOTECH
             </span>
             <span className="hidden sm:inline text-[10px] font-medium text-white/80 uppercase tracking-wider">
               Politeknik Semen Indonesia
@@ -102,7 +102,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                   : 'text-white/80 hover:text-white'
               }`}
             >
-              <span>Info OSJUR</span>
+              <span>Info VOTECH</span>
               <ChevronDown
                 className={`w-3.5 h-3.5 transition-transform duration-200 ${
                   isDropdownOpen ? 'rotate-180' : ''
@@ -115,7 +115,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               <div className="absolute top-full left-0 mt-3 w-64 bg-white text-[#1A284E] rounded-2xl shadow-xl border border-slate-100 p-2 z-50 animate-in fade-in zoom-in-95 duration-150">
                 <div className="px-3 py-1.5 border-b border-slate-100 mb-1">
                   <span className="text-[10px] font-extrabold uppercase tracking-wider text-[#1865F2]">
-                    Panduan & Informasi OSJUR
+                    Panduan & Informasi VOTECH
                   </span>
                 </div>
                 {infoOsjurSubItems.map((sub) => {
@@ -155,7 +155,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                 : 'text-white/80 hover:text-white'
             }`}
           >
-            Dokumentasi
+            Galeri
           </button>
         </nav>
 

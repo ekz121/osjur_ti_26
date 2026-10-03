@@ -43,6 +43,8 @@ export interface Assignment {
   deadline: string;
   detail: string;
   type: string;
+  items: string[];
+  note?: string;
 }
 
 export interface Announcement {

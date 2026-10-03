@@ -1,21 +1,22 @@
 import React, { useState } from 'react';
-import { Send, ExternalLink, Clock, Info } from 'lucide-react';
+import { Send, ExternalLink, Info } from 'lucide-react';
 import { assignments } from '../../data/osjurData';
 
-export const DEFAULT_FORM_URL = 'https://forms.gle/';
+export const DEFAULT_FORM_URL = '';
 
 export const PengumpulanPage: React.FC = () => {
   const [formUrl] = useState<string>(() => {
     try {
-      const saved = localStorage.getItem('osjur_custom_form_url');
-      return saved && saved.trim() ? saved : DEFAULT_FORM_URL;
+      return localStorage.getItem('osjur_custom_form_url')?.trim() ?? DEFAULT_FORM_URL;
     } catch {
       return DEFAULT_FORM_URL;
     }
   });
 
+  const formAvailable = /^https:\/\/(docs\.google\.com\/forms|forms\.gle)\//i.test(formUrl);
+
   return (
-    <div className="space-y-10 md:space-y-12 pb-6">
+    <div className="space-y-8 pb-6 md:space-y-12">
       {/* Header */}
       <section className="space-y-3 text-center max-w-3xl mx-auto pt-2">
         <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#EBF3FF] text-[#1865F2] text-xs font-extrabold uppercase tracking-wider">
@@ -36,60 +37,52 @@ export const PengumpulanPage: React.FC = () => {
           </div>
           <div className="space-y-1">
             <p className="text-sm font-extrabold text-[#1A284E] leading-relaxed">
-              Klik tombol untuk membuka form pengumpulan. Pastikan file sudah siap sebelum deadline.
+              Google Form pengumpulan belum tersedia.
             </p>
             <p className="text-xs text-slate-500">
-              Formulir Google Form resmi panitia akan terbuka di tab baru. Siapkan link Google Drive atau berkas tugasmu.
+              Tautan resmi akan ditampilkan di halaman ini setelah dibagikan oleh panitia VOTECH.
             </p>
           </div>
         </div>
 
       </section>
 
-      {/* 4 Kartu Pengumpulan */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+      <div className="mx-auto grid max-w-5xl grid-cols-1 gap-5 lg:grid-cols-3">
         {assignments.map((task) => (
           <div
             key={task.id}
-            className="bg-white rounded-3xl border border-slate-100 shadow-[0_6px_25px_-5px_rgba(0,0,0,0.06)] p-7 flex flex-col justify-between hover:shadow-xl hover:-translate-y-1 transition-all"
+            className="flex h-full flex-col justify-between rounded-3xl border border-slate-100 bg-white p-5 shadow-[0_8px_28px_-12px_rgba(15,23,42,0.18)] sm:p-7"
           >
             <div className="space-y-4">
-              {/* Header: Task Number & Deadline */}
-              <div className="flex items-center justify-between gap-2">
-                <span className="text-xs font-black uppercase tracking-wider text-[#1865F2] bg-[#EBF3FF] px-3.5 py-1 rounded-full">
-                  {task.number}
-                </span>
-                <div className="flex items-center gap-1.5 text-xs font-bold text-[#FFA033] bg-[#FFF6EB] px-3.5 py-1 rounded-full">
-                  <Clock className="w-3.5 h-3.5" />
-                  <span>{task.deadline}</span>
-                </div>
-              </div>
+              <span className="inline-flex rounded-full bg-[#EBF3FF] px-3 py-1 text-[11px] font-extrabold uppercase tracking-wider text-[#1865F2]">{task.type}</span>
 
               <div>
                 <h3 className="text-xl font-black text-[#1A284E]">
                   {task.title}
                 </h3>
-                <p className="text-xs sm:text-sm text-slate-500 mt-2 leading-relaxed">
-                  {task.description}
-                </p>
-              </div>
-
-              <div className="p-3.5 rounded-2xl bg-[#F8FAFE] border border-slate-100 text-xs text-slate-500">
-                <span className="font-semibold text-[#1865F2]">Format Pengiriman:</span> Link Google Drive, Dokumen, atau GitHub sesuai instruksi.
+                <ul className="mt-4 space-y-2 text-sm leading-6 text-slate-600">
+                  {task.items.map((item) => (
+                    <li key={item} className="flex gap-2">
+                      <span aria-hidden="true" className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[#FFA033]" />
+                      <span className="min-w-0 break-words">{item}</span>
+                    </li>
+                  ))}
+                </ul>
               </div>
             </div>
 
             {/* Bright Orange Button matching Mockup CTA Style */}
             <div className="pt-6 mt-6 border-t border-slate-100">
-              <a
-                href={formUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-full min-h-[46px] px-6 py-3 rounded-full bg-[#FFA033] hover:bg-[#F59020] text-white text-xs sm:text-sm font-extrabold uppercase tracking-wider flex items-center justify-center gap-2 transition-all cursor-pointer shadow-md hover:shadow-lg active:scale-95"
-              >
-                <span>Kumpulkan Tugas</span>
-                <ExternalLink className="w-4 h-4" />
-              </a>
+              {formAvailable ? (
+                <a href={formUrl} target="_blank" rel="noopener noreferrer" className="flex min-h-12 w-full items-center justify-center gap-2 rounded-full bg-[#FFA033] px-5 py-3 text-center text-xs font-extrabold uppercase tracking-wider text-white shadow-md transition-colors hover:bg-[#F59020] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#1865F2] focus-visible:ring-offset-2">
+                  <span>Buka Google Form</span>
+                  <ExternalLink className="h-4 w-4" />
+                </a>
+              ) : (
+                <button type="button" disabled className="flex min-h-12 w-full cursor-not-allowed items-center justify-center rounded-full bg-slate-100 px-5 py-3 text-xs font-extrabold uppercase tracking-wider text-slate-500">
+                  Form segera tersedia
+                </button>
+              )}
             </div>
           </div>
         ))}

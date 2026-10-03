@@ -20,7 +20,7 @@ export const DresscodePage: React.FC = () => {
 
         <p className="text-xs sm:text-sm text-slate-500 max-w-xl mx-auto leading-relaxed">
           Berikut adalah ketentuan pakaian resmi serta daftar atribut wajib yang harus kamu kenakan dan bawa
-          selama 3 hari pelaksanaan OSJUR D3 Teknologi Informasi 2026.
+          selama 3 hari pelaksanaan VOTECH 2026.
         </p>
       </section>
 

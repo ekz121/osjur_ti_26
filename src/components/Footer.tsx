@@ -46,7 +46,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
               </div>
               <div>
                 <span className="font-black text-lg tracking-tight block leading-tight">
-                  OSJUR D3 TI
+                  VOTECH
                 </span>
                 <span className="text-[10px] text-white/70 uppercase tracking-wider font-semibold">
                   Politeknik Semen Indonesia
@@ -89,7 +89,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                     onClick={() => onNavigate('dokumentasi')}
                     className="text-left hover:text-white hover:translate-x-1 transition-all cursor-pointer"
                   >
-                    Dokumentasi Kegiatan
+                    Galeri Kegiatan
                   </button>
                 </>
               )}
@@ -99,7 +99,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
           {/* Col 3: Info OSJUR & Tugas */}
           <div className="space-y-3">
             <h4 className="text-xs font-black uppercase tracking-wider text-[#FFA033]">
-              INFO OSJUR
+              INFO VOTECH
             </h4>
             <div className="flex flex-col space-y-2 text-xs text-white/85 font-medium">
               {onNavigate && (
@@ -163,7 +163,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
 
         {/* Bottom Bar */}
         <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-[11px] text-white/70">
-          <span>&copy; 2026 OSJUR D3 Teknologi Informasi - HMTI Politeknik Semen Indonesia. All rights reserved.</span>
+          <span>&copy; 2026 VOTECH - HMTI Politeknik Semen Indonesia. All rights reserved.</span>
           <span>Designed with Modern Education Platform Style</span>
         </div>
       </div>

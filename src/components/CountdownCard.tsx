@@ -44,7 +44,7 @@ export const CountdownCard: React.FC = () => {
         ))}
       </div>
       <p className="text-center text-xs sm:text-sm font-medium text-[#4A5A85] mt-3">
-        Menuju hari pertama OSJUR
+        Menuju pelaksanaan VOTECH
       </p>
     </div>
   );

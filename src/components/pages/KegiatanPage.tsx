@@ -20,13 +20,13 @@ export const KegiatanPage: React.FC = () => {
         </div>
 
         <h1 className="text-3xl sm:text-5xl font-black text-[#1A284E] tracking-tight">
-          Rangkaian Kegiatan OSJUR
+          Rangkaian Kegiatan VOTECH
         </h1>
 
         <div className="w-12 h-1 bg-[#1865F2] rounded-full mx-auto" />
 
         <p className="text-xs sm:text-sm text-slate-500 max-w-xl mx-auto leading-relaxed">
-          Simak jadwal dan lokasi pelaksanaan OSJUR D3 Teknologi Informasi dari hari pertama hingga penutupan.
+          Simak jadwal dan lokasi pelaksanaan VOTECH dari hari pertama hingga penutupan.
           Hadir tepat waktu dan siapkan dirimu secara maksimal!
         </p>
 

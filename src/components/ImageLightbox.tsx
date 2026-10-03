@@ -30,7 +30,7 @@ export const ImageLightbox: React.FC<ImageLightboxProps> = ({ photo, onClose }) 
         <div className="bg-slate-900 flex items-center justify-center">
           <img
             src={photo.src}
-            alt={photo.alt || 'Dokumentasi OSJUR D3 TI'}
+            alt={photo.alt || 'Galeri VOTECH'}
             referrerPolicy="no-referrer"
             className="w-full max-h-[75vh] object-contain"
           />
@@ -42,7 +42,7 @@ export const ImageLightbox: React.FC<ImageLightboxProps> = ({ photo, onClose }) 
               <Calendar className="w-4 h-4 text-[#FFA033]" />
               <span>{photo.date}</span>
             </div>
-            <span className="text-xs text-slate-400">OSJUR D3 Teknologi Informasi</span>
+            <span className="text-xs text-slate-400">VOTECH Politeknik Semen Indonesia</span>
           </div>
         ) : null}
       </div>

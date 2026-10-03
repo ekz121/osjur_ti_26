@@ -102,7 +102,7 @@ export const SubmissionModal: React.FC<SubmissionModalProps> = ({
             </div>
             <h4 className="text-lg font-bold text-[#0A1A44]">Tugas Berhasil Dikirim!</h4>
             <p className="text-sm text-[#4A5A85] mt-1">
-              Data pengumpulanmu telah tercatat oleh sistem OSJUR D3 TI.
+              Data pengumpulanmu telah tercatat oleh sistem VOTECH.
             </p>
           </div>
         ) : (
