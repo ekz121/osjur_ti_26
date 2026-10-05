@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { X, ChevronRight, ChevronDown, Phone, Instagram } from 'lucide-react';
+import { X, ChevronRight, ChevronDown, Phone } from 'lucide-react';
 import { PageId } from '../types';
 import { infoOsjurSubItems } from './Navbar';
 
@@ -35,6 +35,7 @@ export const MobileDrawer: React.FC<MobileDrawerProps> = ({
 
   const isInfoOsjurChild =
     currentPage === 'kegiatan' ||
+    currentPage === 'guidebook' ||
     currentPage === 'dresscode' ||
     currentPage === 'penugasan' ||
     currentPage === 'pengumpulan';
@@ -177,14 +178,10 @@ export const MobileDrawer: React.FC<MobileDrawerProps> = ({
 
         {/* Quick Contact Footer in Drawer */}
         <div className="p-4 bg-slate-50 border-t border-slate-100 text-xs text-slate-500 space-y-1.5">
-          <div className="flex items-center gap-2">
+          <a href="tel:+6285707095565" className="flex min-h-11 items-center gap-2 rounded-xl px-2 transition-colors hover:bg-white">
             <Phone className="w-3.5 h-3.5 text-[#1865F2]" />
-            <span>Panitia: 0812-3456-7890</span>
-          </div>
-          <div className="flex items-center gap-2">
-            <Instagram className="w-3.5 h-3.5 text-[#1865F2]" />
-            <span>@osjur.d3ti</span>
-          </div>
+            <span>Panitia: +62 857-0709-5565</span>
+          </a>
         </div>
       </aside>
     </div>

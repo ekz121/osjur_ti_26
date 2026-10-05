@@ -1,5 +1,5 @@
 import React from 'react';
-import { Phone, Instagram, MapPin } from 'lucide-react';
+import { Phone, MapPin } from 'lucide-react';
 import { PageId } from '../types';
 import { HmtiLogo } from './HmtiLogo';
 
@@ -105,6 +105,12 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
               {onNavigate && (
                 <>
                   <button
+                    onClick={() => onNavigate('guidebook')}
+                    className="text-left hover:text-white hover:translate-x-1 transition-all cursor-pointer"
+                  >
+                    Guidebook VOTECH 2026
+                  </button>
+                  <button
                     onClick={() => onNavigate('dresscode')}
                     className="text-left hover:text-white hover:translate-x-1 transition-all cursor-pointer"
                   >
@@ -139,22 +145,11 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
               </li>
               <li>
                 <a
-                  href="tel:081234567890"
+                  href="tel:+6285707095565"
                   className="flex items-center gap-2.5 hover:text-white transition-colors"
                 >
                   <Phone className="w-4 h-4 text-[#FFA033] shrink-0" />
-                  <span>Panitia: 0812-3456-7890</span>
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://instagram.com/osjur.d3ti"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="flex items-center gap-2.5 hover:text-white transition-colors"
-                >
-                  <Instagram className="w-4 h-4 text-[#FFA033] shrink-0" />
-                  <span>@osjur.d3ti</span>
+                  <span>Panitia: +62 857-0709-5565</span>
                 </a>
               </li>
             </ul>

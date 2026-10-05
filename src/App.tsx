@@ -15,6 +15,7 @@ import { DresscodePage } from './components/pages/DresscodePage';
 import { PenugasanPage } from './components/pages/PenugasanPage';
 import { PengumpulanPage } from './components/pages/PengumpulanPage';
 import { DokumentasiPage } from './components/pages/DokumentasiPage';
+import { GuidebookPage } from './components/pages/GuidebookPage';
 
 export default function App() {
   const [currentPage, setCurrentPage] = useState<PageId>('beranda');
@@ -45,6 +46,8 @@ export default function App() {
         return <PenugasanPage />;
       case 'pengumpulan':
         return <PengumpulanPage />;
+      case 'guidebook':
+        return <GuidebookPage />;
       case 'dokumentasi':
         return <DokumentasiPage />;
       default:

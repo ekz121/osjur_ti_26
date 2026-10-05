@@ -1,8 +1,9 @@
 import React from 'react';
-import { FileText, Info, User, Users, UserRoundCog } from 'lucide-react';
+import { FileText, User, Users, UserRoundCog } from 'lucide-react';
 import { assignments } from '../../data/osjurData';
 
 const assignmentIcons = { Individu: User, Kelompok: Users, Angkatan: UserRoundCog };
+const twibbonUrl = 'https://canva.link/ynrjncesxexm9zf';
 
 export const PenugasanPage: React.FC = () => (
   <div className="space-y-8 pb-6 md:space-y-12">
@@ -14,7 +15,7 @@ export const PenugasanPage: React.FC = () => (
       <h1 className="text-3xl font-black tracking-tight text-[#1A284E] sm:text-5xl">Penugasan VOTECH</h1>
       <div className="mx-auto h-1 w-12 rounded-full bg-[#1865F2]" />
       <p className="mx-auto max-w-2xl text-sm leading-6 text-slate-500 sm:text-base">
-        Perhatikan jenis tugas dan kerjakan setiap poin sesuai arahan panitia.
+        Berikut Rangkaian Penugasan VOTECH Politeknik Semen Indonesia (POLTEKSI) 2026:
       </p>
     </section>
 
@@ -35,16 +36,25 @@ export const PenugasanPage: React.FC = () => (
               {task.items.map((item, index) => (
                 <li key={item} className="flex gap-3 text-sm leading-6 text-[#334155]">
                   <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#EBF3FF] text-xs font-black text-[#1865F2]">{index + 1}</span>
-                  <span className="min-w-0 break-words">{item}</span>
+                  {item.startsWith('link twibbon:') ? (
+                    <span className="min-w-0 break-words">
+                      link twibbon: (
+                      <a
+                        href={twibbonUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="break-all font-bold text-[#1865F2] underline decoration-[#1865F2]/40 underline-offset-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#1865F2]"
+                      >
+                        {twibbonUrl}
+                      </a>
+                      )
+                    </span>
+                  ) : (
+                    <span className="min-w-0 break-words">{item}</span>
+                  )}
                 </li>
               ))}
             </ol>
-            {task.note ? (
-              <div className="mt-5 flex gap-2 rounded-2xl bg-[#F8FAFE] p-3.5 text-xs leading-5 text-slate-600">
-                <Info className="mt-0.5 h-4 w-4 shrink-0 text-[#1865F2]" />
-                <p>{task.note}</p>
-              </div>
-            ) : null}
           </article>
         );
       })}

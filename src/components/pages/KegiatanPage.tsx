@@ -1,114 +1,82 @@
-import React, { useState } from 'react';
-import { Calendar, Clock, MapPin, Sparkles } from 'lucide-react';
-import { schedules } from '../../data/osjurData';
+import React from 'react';
+import { CalendarDays, ClipboardList } from 'lucide-react';
+import { activityGuides, schedules } from '../../data/osjurData';
 
-export const KegiatanPage: React.FC = () => {
-  const [activeDayFilter, setActiveDayFilter] = useState<number | 'all'>('all');
-
-  const filteredSchedules =
-    activeDayFilter === 'all'
-      ? schedules
-      : schedules.filter((s) => s.day === activeDayFilter);
-
-  return (
-    <div className="space-y-10 md:space-y-12 pb-6">
-      {/* Header */}
-      <section className="space-y-3 text-center max-w-3xl mx-auto pt-2">
-        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#EBF3FF] text-[#1865F2] text-xs font-extrabold uppercase tracking-wider">
-          <Calendar className="w-4 h-4" />
-          <span>AGENDA RESMI MAHASISWA BARU</span>
-        </div>
-
-        <h1 className="text-3xl sm:text-5xl font-black text-[#1A284E] tracking-tight">
-          Rangkaian Kegiatan VOTECH
-        </h1>
-
-        <div className="w-12 h-1 bg-[#1865F2] rounded-full mx-auto" />
-
-        <p className="text-xs sm:text-sm text-slate-500 max-w-xl mx-auto leading-relaxed">
-          Simak jadwal dan lokasi pelaksanaan VOTECH dari hari pertama hingga penutupan.
-          Hadir tepat waktu dan siapkan dirimu secara maksimal!
-        </p>
-
-        {/* Filter Buttons matching mockup pill style */}
-        <div className="flex flex-wrap items-center justify-center gap-2.5 pt-4">
-          <button
-            onClick={() => setActiveDayFilter('all')}
-            className={`px-5 py-2 rounded-full text-xs font-bold uppercase tracking-wider transition-all cursor-pointer shadow-xs ${
-              activeDayFilter === 'all'
-                ? 'bg-[#1865F2] text-white shadow-md'
-                : 'bg-white text-slate-600 border border-slate-200 hover:border-[#1865F2] hover:text-[#1865F2]'
-            }`}
-          >
-            Semua Hari (3 Hari)
-          </button>
-          {[1, 2, 3].map((dayNum) => (
-            <button
-              key={dayNum}
-              onClick={() => setActiveDayFilter(dayNum)}
-              className={`px-5 py-2 rounded-full text-xs font-bold uppercase tracking-wider transition-all cursor-pointer shadow-xs ${
-                activeDayFilter === dayNum
-                  ? 'bg-[#FFA033] text-white shadow-md'
-                  : 'bg-white text-slate-600 border border-slate-200 hover:border-[#FFA033] hover:text-[#FFA033]'
-              }`}
-            >
-              Hari {dayNum}
-            </button>
-          ))}
-        </div>
-      </section>
-
-      {/* Cards per Hari (Agak kotak tapi ada lengkungan: rounded-2xl) */}
-      <div className="space-y-6 max-w-4xl mx-auto">
-        {filteredSchedules.map((schedule) => (
-          <div
-            key={schedule.day}
-            className="bg-white rounded-2xl border border-slate-100 shadow-[0_6px_25px_-5px_rgba(0,0,0,0.06)] overflow-hidden transition-all hover:shadow-lg"
-          >
-            {/* Header Biru Hari */}
-            <div className="bg-gradient-to-r from-[#1865F2] to-[#1255DC] text-white px-6 py-4 flex flex-wrap items-center justify-between gap-3">
-              <div>
-                <span className="text-[10px] uppercase tracking-widest font-extrabold text-[#FFA033] block">
-                  JADWAL KEGIATAN
-                </span>
-                <h2 className="text-xl sm:text-2xl font-black text-white">
-                  {schedule.title}
-                </h2>
-              </div>
-              <span className="text-xs font-bold bg-white/20 backdrop-blur-xs px-3.5 py-1.5 rounded-full text-white border border-white/20">
-                {schedule.dateStr}
-              </span>
-            </div>
-
-            {/* List Kegiatan */}
-            <div className="p-5 sm:p-7 divide-y divide-slate-100">
-              {schedule.activities.map((act, idx) => (
-                <div
-                  key={idx}
-                  className="py-4 first:pt-0 last:pb-0 flex flex-col sm:flex-row sm:items-center justify-between gap-3 hover:bg-[#F8FAFE] px-3 rounded-xl transition-colors"
-                >
-                  <div className="flex items-center gap-4">
-                    <div className="w-24 shrink-0 flex items-center gap-1.5 text-xs font-extrabold text-[#1865F2] tabular-nums bg-[#EBF3FF] px-2.5 py-1 rounded-lg">
-                      <Clock className="w-3.5 h-3.5 stroke-[2.5]" />
-                      <span>{act.time} WIB</span>
-                    </div>
-                    <div>
-                      <h3 className="font-extrabold text-sm sm:text-base text-[#1A284E]">
-                        {act.name}
-                      </h3>
-                    </div>
-                  </div>
-
-                  <div className="flex items-center gap-1.5 text-xs font-semibold text-slate-500 sm:self-center pl-7 sm:pl-0">
-                    <MapPin className="w-3.5 h-3.5 text-[#FFA033] shrink-0" />
-                    <span>{act.location}</span>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        ))}
+export const KegiatanPage: React.FC = () => (
+  <div className="space-y-8 pb-6 md:space-y-12">
+    <section className="mx-auto max-w-3xl space-y-3 pt-2 text-center">
+      <div className="inline-flex items-center gap-2 rounded-full bg-[#EBF3FF] px-4 py-1.5 text-xs font-extrabold uppercase tracking-wider text-[#1865F2]">
+        <CalendarDays className="h-4 w-4" />
+        <span>Agenda VOTECH 2026</span>
       </div>
-    </div>
-  );
-};
+      <h1 className="text-3xl font-black tracking-tight text-[#1A284E] sm:text-5xl">Rangkaian Kegiatan</h1>
+      <div className="mx-auto h-1 w-12 rounded-full bg-[#1865F2]" />
+      <p className="mx-auto max-w-2xl text-sm leading-6 text-slate-600 sm:text-base">
+        Berikut rangkaian kegiatan VOTECH Politeknik Semen Indonesia (POLTEKSI) 2026:
+      </p>
+    </section>
+
+    <section className="mx-auto max-w-5xl overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-[0_8px_28px_-12px_rgba(15,23,42,0.18)]">
+      <table className="w-full table-fixed border-collapse text-left">
+        <caption className="sr-only">Jadwal rangkaian kegiatan VOTECH 2026</caption>
+        <thead className="bg-[#1865F2] text-white">
+          <tr>
+            <th scope="col" className="w-[25%] border-r border-white/25 px-3 py-3 text-[11px] font-extrabold uppercase tracking-wide sm:w-[23%] sm:px-6 sm:py-4 sm:text-sm">Tanggal</th>
+            <th scope="col" className="w-[31%] border-r border-white/25 px-3 py-3 text-[11px] font-extrabold uppercase tracking-wide sm:w-[32%] sm:px-6 sm:py-4 sm:text-sm">Kegiatan</th>
+            <th scope="col" className="px-3 py-3 text-[11px] font-extrabold uppercase tracking-wide sm:px-6 sm:py-4 sm:text-sm">Rangkaian</th>
+          </tr>
+        </thead>
+        <tbody className="divide-y divide-slate-200">
+          {schedules.map((schedule) => (
+            <tr key={schedule.id} className="align-top even:bg-[#F8FAFE]">
+              <td className="border-r border-slate-200 px-3 py-4 text-xs font-extrabold leading-5 text-[#1865F2] sm:px-6 sm:py-5 sm:text-sm">{schedule.dateStr}</td>
+              <td className="border-r border-slate-200 px-3 py-4 text-xs font-black leading-5 text-[#1A284E] sm:px-6 sm:py-5 sm:text-base">{schedule.title}</td>
+              <td className="px-3 py-4 sm:px-6 sm:py-5">
+                <ol className="space-y-2 text-xs leading-5 text-slate-600 sm:text-sm sm:leading-6">
+                  {schedule.items.map((item, index) => (
+                    <li key={item} className="flex gap-2">
+                      <span className="font-extrabold text-[#D66A00]">{index + 1}.</span>
+                      <span className="min-w-0 break-words">{item}</span>
+                    </li>
+                  ))}
+                </ol>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </section>
+
+    <section className="mx-auto max-w-5xl space-y-4">
+      <div className="flex items-center gap-3">
+        <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#FFF1DF] text-[#C76500]">
+          <ClipboardList className="h-5 w-5" />
+        </div>
+        <div>
+          <p className="text-xs font-extrabold uppercase tracking-wider text-[#C76500]">Orientasi Jurusan Offline</p>
+          <h2 className="text-xl font-black text-[#1A284E] sm:text-2xl">Kegiatan dan Juknis</h2>
+        </div>
+      </div>
+
+      <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-[0_8px_28px_-12px_rgba(15,23,42,0.18)]">
+        <table className="w-full table-fixed border-collapse text-left">
+          <caption className="sr-only">Kegiatan dan juknis Orientasi Jurusan Offline</caption>
+          <thead className="bg-[#1865F2] text-white">
+            <tr>
+              <th scope="col" className="w-[34%] border-r border-white/25 px-3 py-3 text-[11px] font-extrabold uppercase tracking-wide sm:w-[36%] sm:px-6 sm:py-4 sm:text-sm">Kegiatan</th>
+              <th scope="col" className="px-3 py-3 text-[11px] font-extrabold uppercase tracking-wide sm:px-6 sm:py-4 sm:text-sm">Juknis</th>
+            </tr>
+          </thead>
+          <tbody className="divide-y divide-slate-200">
+            {activityGuides.map((item) => (
+              <tr key={item.activity} className="align-top even:bg-[#F8FAFE]">
+                <th scope="row" className="border-r border-slate-200 px-3 py-3 text-xs font-extrabold leading-5 text-[#1865F2] sm:px-6 sm:py-4 sm:text-sm sm:text-[#1A284E]">{item.activity}</th>
+                <td className="px-3 py-3 text-xs leading-5 text-slate-600 sm:px-6 sm:py-4 sm:text-sm sm:leading-6">{item.technicalGuide}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </div>
+);

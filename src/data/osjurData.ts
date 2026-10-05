@@ -1,9 +1,10 @@
 import {
   Announcement,
   Assignment,
+  ActivityGuide,
   Competency,
-  DayDresscode,
-  DaySchedule,
+  DresscodeGroup,
+  ProgramSchedule,
   PhotoItem,
 } from '../types';
 import schoolGroupImage from '../assets/images/gallery_it_go_to_school_1.jpeg';
@@ -68,117 +69,43 @@ export const announcements: Announcement[] = [
   },
 ];
 
-export const schedules: DaySchedule[] = [
+export const schedules: ProgramSchedule[] = [
   {
-    day: 1,
-    title: 'Hari 1',
-    dateStr: 'Senin, 12 Oktober 2026',
-    activities: [
-      {
-        time: '07.00',
-        name: 'Registrasi Ulang',
-        location: 'Lobi Gedung A',
-        type: 'wajib',
-      },
-      {
-        time: '08.00',
-        name: 'Pembukaan VOTECH',
-        location: 'Aula Utama',
-        type: 'wajib',
-      },
-      {
-        time: '10.00',
-        name: 'Perkenalan Prodi TI',
-        location: 'Ruang Seminar',
-        type: 'workshop',
-      },
-      {
-        time: '13.00',
-        name: 'Games Kelompok',
-        location: 'Lapangan',
-        type: 'kelompok',
-      },
-    ],
+    id: 'online',
+    title: 'Penugasan Online',
+    dateStr: '7–9 Oktober 2026',
+    items: ['Penugasan Individu', 'Penugasan Kelompok', 'Penugasan Angkatan'],
   },
   {
-    day: 2,
-    title: 'Hari 2',
-    dateStr: 'Selasa, 13 Oktober 2026',
-    activities: [
-      {
-        time: '07.30',
-        name: 'Apel Pagi',
-        location: 'Lapangan',
-        type: 'wajib',
-      },
-      {
-        time: '09.00',
-        name: 'Workshop Dasar Web',
-        location: 'Lab Komputer 1',
-        type: 'workshop',
-      },
-      {
-        time: '13.00',
-        name: 'Sesi Mentoring',
-        location: 'Ruang Kelas B2',
-        type: 'mentoring',
-      },
-      {
-        time: '15.30',
-        name: 'Evaluasi Harian',
-        location: 'Ruang Kelas B2',
-        type: 'wajib',
-      },
-    ],
-  },
-  {
-    day: 3,
-    title: 'Hari 3',
-    dateStr: 'Rabu, 14 Oktober 2026',
-    activities: [
-      {
-        time: '08.00',
-        name: 'Mini Project Kelompok',
-        location: 'Lab Komputer 2',
-        type: 'kelompok',
-      },
-      {
-        time: '12.30',
-        name: 'Presentasi Hasil',
-        location: 'Aula Utama',
-        type: 'workshop',
-      },
-      {
-        time: '15.00',
-        name: 'Penutupan VOTECH',
-        location: 'Aula Utama',
-        type: 'wajib',
-      },
-    ],
+    id: 'offline',
+    title: 'Orientasi Jurusan Offline',
+    dateStr: '11 Oktober 2026',
+    items: ['Penjelasan Materi Oleh Pemateri', 'Presentasi Penugasan'],
   },
 ];
 
-export const dresscodes: DayDresscode[] = [
+export const activityGuides: ActivityGuide[] = [
+  { activity: 'Registrasi', technicalGuide: 'MABA dating, Registrasi, dan Masuk Ruangan' },
+  { activity: 'Pembukaan', technicalGuide: 'MABA duduk dan dibuka oleh MC' },
+  { activity: 'Materi 1', technicalGuide: 'Pengenalan jurusan dan Profil Kelulusan' },
+  { activity: 'Materi 2', technicalGuide: 'Dasar Dasar Jaringan Komputer' },
+  { activity: 'Materi 3', technicalGuide: 'Dasar-dasar Pemrograman Website' },
+  { activity: 'Materi 4', technicalGuide: 'Dasar-dasar CyberSecurity' },
+  { activity: 'Presentasi logo', technicalGuide: 'MABA mempresentasikan Logo' },
+  { activity: 'Bounding', technicalGuide: 'Sharing' },
+  { activity: 'persiapan pulang', technicalGuide: 'Penutup' },
+];
+
+export const dresscodes: DresscodeGroup[] = [
   {
-    day: 1,
-    title: 'Hari 1',
-    dateStr: 'Senin, 12 Oktober 2026',
-    attire: 'Kemeja putih, celana/rok hitam, sepatu hitam.',
-    items: ['Name tag', 'Alat tulis', 'Botol minum'],
+    id: 'putra',
+    title: 'Putra',
+    items: ['Baju Putih Formal', 'Celana Hitam Formal', 'Sepatu Bebas'],
   },
   {
-    day: 2,
-    title: 'Hari 2',
-    dateStr: 'Selasa, 13 Oktober 2026',
-    attire: 'Kaos jurusan, celana bahan hitam, sepatu bebas rapi.',
-    items: ['Laptop', 'Charger', 'Name tag'],
-  },
-  {
-    day: 3,
-    title: 'Hari 3',
-    dateStr: 'Rabu, 14 Oktober 2026',
-    attire: 'Kemeja biru, celana/rok hitam, sepatu hitam.',
-    items: ['Name tag', 'Laptop', 'Bekal ringan'],
+    id: 'putri',
+    title: 'Putri',
+    items: ['Kerudung Hitam', 'Baju Putih Formal', 'Celana Hitam Formal', 'Sepatu Bebas'],
   },
 ];
 
@@ -187,41 +114,40 @@ export const assignments: Assignment[] = [
     id: 'individu',
     number: '01',
     title: 'Penugasan Individu',
-    description: 'Dikerjakan oleh setiap peserta VOTECH.',
-    deadline: 'Ikuti arahan panitia',
-    detail: 'Selesaikan seluruh butir penugasan individu berikut.',
+    description: 'Penugasan individu VOTECH 2026.',
+    deadline: '7–9 Oktober 2026',
+    detail: 'Berikut rangkaian penugasan individu.',
     type: 'Individu',
     items: [
-      'Upload Twibbon',
-      'Wajib Connect LinkedIn minimal 5 teman sekelas',
-      'Membuat Roadmap Lulusan',
+      'Upload Twibbon Resmi VOTECH 2026',
+      'link twibbon: (https://canva.link/ynrjncesxexm9zf)',
+      'Membuat Roadmap Lulusan (Setelah pelaksanaan Materi 4)',
     ],
-    note: 'Roadmap Lulusan dikerjakan saat pelaksanaan VOTECH pada Sabtu, 10 Oktober 2026.',
   },
   {
     id: 'kelompok',
     number: '02',
     title: 'Penugasan Kelompok',
-    description: 'Dikerjakan dan dipresentasikan bersama kelompok.',
-    deadline: 'Saat pelaksanaan VOTECH',
-    detail: 'Siapkan identitas kelas dan presentasi singkat.',
+    description: 'Penugasan kelompok VOTECH 2026.',
+    deadline: '7–9 Oktober 2026',
+    detail: 'Berikut rangkaian penugasan kelompok.',
     type: 'Kelompok',
     items: [
-      'Membuat Logo Kelas + Filosofi Logo tersebut',
-      'Mempresentasikan selama 2 menit pada saat pelaksanaan VOTECH',
+      'Membuat Logo Kelas + Filosofi Logo Tersebut',
+      'Mempresentasikan Maksimal 2 menit Pada Saat Pelaksanaan VOTECH 2026',
     ],
   },
   {
     id: 'angkatan',
     number: '03',
     title: 'Penugasan Angkatan',
-    description: 'Dikerjakan bersama seluruh peserta satu angkatan.',
-    deadline: 'Dijelaskan saat pelaksanaan',
-    detail: 'Ketentuan lengkap akan dijelaskan saat pelaksanaan VOTECH.',
+    description: 'Penugasan angkatan VOTECH 2026.',
+    deadline: '7–9 Oktober 2026',
+    detail: 'Berikut rangkaian penugasan angkatan.',
     type: 'Angkatan',
     items: [
       'Membuat Akun Instagram Kelas',
-      'Membentuk Struktural Kelas',
+      'Membuat Struktur Kelas',
       'Menentukan Hasil/Voting',
     ],
   },

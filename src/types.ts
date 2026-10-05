@@ -5,6 +5,7 @@ export type PageId =
   | 'dresscode'
   | 'penugasan'
   | 'pengumpulan'
+  | 'guidebook'
   | 'dokumentasi';
 
 export interface Competency {
@@ -13,25 +14,21 @@ export interface Competency {
   description: string;
 }
 
-export interface Activity {
-  time: string;
-  name: string;
-  location: string;
-  type?: 'wajib' | 'workshop' | 'mentoring' | 'kelompok';
+export interface ActivityGuide {
+  activity: string;
+  technicalGuide: string;
 }
 
-export interface DaySchedule {
-  day: number;
+export interface ProgramSchedule {
+  id: string;
   title: string;
   dateStr: string;
-  activities: Activity[];
+  items: string[];
 }
 
-export interface DayDresscode {
-  day: number;
+export interface DresscodeGroup {
+  id: string;
   title: string;
-  dateStr: string;
-  attire: string;
   items: string[];
 }
 

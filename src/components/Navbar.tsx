@@ -11,7 +11,8 @@ interface NavbarProps {
 }
 
 export const infoOsjurSubItems: { id: PageId; label: string; desc: string }[] = [
-  { id: 'kegiatan', label: 'Rangkaian Kegiatan', desc: 'Jadwal & agenda tiap hari' },
+  { id: 'guidebook', label: 'Guidebook VOTECH', desc: 'Baca & download panduan resmi' },
+  { id: 'kegiatan', label: 'Rangkaian Kegiatan', desc: 'Agenda online & offline' },
   { id: 'dresscode', label: 'Dresscode & Atribut', desc: 'Ketentuan pakaian resmi' },
   { id: 'penugasan', label: 'Penugasan Maba', desc: 'Daftar instruksi & deadline' },
   { id: 'pengumpulan', label: 'Portal Pengumpulan', desc: 'Tautan form pengumpulan tugas' },
@@ -28,6 +29,7 @@ export const Navbar: React.FC<NavbarProps> = ({
 
   const isInfoOsjurActive =
     currentPage === 'kegiatan' ||
+    currentPage === 'guidebook' ||
     currentPage === 'dresscode' ||
     currentPage === 'penugasan' ||
     currentPage === 'pengumpulan';

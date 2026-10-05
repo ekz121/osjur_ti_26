@@ -61,14 +61,14 @@ export const BerandaPage: React.FC<BerandaPageProps> = ({ onNavigate }) => {
     {
       page: 'kegiatan',
       title: 'Rangkaian Kegiatan',
-      description: 'Jadwal lengkap tiap hari',
+      description: 'Agenda online dan offline',
       icon: Calendar,
       accentColor: 'bg-[#1865F2]',
     },
     {
       page: 'dresscode',
       title: 'Dresscode & Atribut',
-      description: 'Pakaian resmi yang dibawa',
+      description: 'Ketentuan pakaian peserta',
       icon: Shirt,
       accentColor: 'bg-[#06B6D4]',
     },
@@ -151,7 +151,7 @@ export const BerandaPage: React.FC<BerandaPageProps> = ({ onNavigate }) => {
                 <img
                   src={heroVotechImage}
                   alt="Ilustrasi utama VOTECH Politeknik Semen Indonesia"
-                  className="h-full w-full object-contain drop-shadow-2xl"
+                  className="h-full w-full scale-[1.35] object-contain drop-shadow-2xl sm:scale-110 lg:scale-100"
                 />
               </div>
 
