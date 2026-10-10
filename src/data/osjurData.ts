@@ -79,7 +79,7 @@ export const schedules: ProgramSchedule[] = [
   {
     id: 'offline',
     title: 'Orientasi Jurusan Offline',
-    dateStr: '10 Oktober 2026',
+    dateStr: '11 Oktober 2026',
     items: ['Penjelasan Materi Oleh Pemateri', 'Presentasi Penugasan'],
   },
 ];
